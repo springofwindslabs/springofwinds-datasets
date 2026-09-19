@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regulatory Compliance CoT Record",
+  "type": "object",
+  "required": [
+    "id",
+    "regulation",
+    "case",
+    "reasoning_steps",
+    "conclusion"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique row identifier."
+    },
+    "regulation": {
+      "type": "string",
+      "description": "Regulation or standard under review."
+    },
+    "case": {
+      "type": "string",
+      "description": "Scenario under evaluation."
+    },
+    "reasoning_steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "Ordered chain-of-thought reasoning steps."
+    },
+    "conclusion": {
+      "type": "string",
+      "description": "Final compliance determination."
+    }
+  }
+}

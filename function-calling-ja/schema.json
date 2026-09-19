@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Function Calling (JA) Record",
+  "type": "object",
+  "required": [
+    "id",
+    "tools",
+    "conversations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable unique row identifier."
+    },
+    "tools": {
+      "type": "string",
+      "description": "JSON-encoded tool definitions available to the agent."
+    },
+    "conversations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "value"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Turn role (e.g. human / gpt / tool)."
+          },
+          "value": {
+            "type": "string",
+            "description": "Turn content. Tool calls are strict JSON."
+          }
+        }
+      }
+    }
+  }
+}
