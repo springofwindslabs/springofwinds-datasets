@@ -32,5 +32,15 @@ https://huggingface.co/springofwindslabs
 Available on Gumroad:
 https://springofwindslabs.gumroad.com
 
+## Get Started: Trial → Full
+
+| Step | What you get | Link |
+|---|---|---|
+| 1. **Validate free** | 50-row trial per dataset (Apache-2.0, no gating) | [Hugging Face](https://huggingface.co/springofwindslabs) |
+| 2. **Inspect schema** | `schema.json` + 5-row samples in this repo | [Datasets table above](#datasets) |
+| 3. **Go production** | 1,000+ row volumes, perpetual commercial license, instant delivery | [Gumroad](https://springofwindslabs.gumroad.com?utm_source=github&utm_medium=readme_funnel&utm_campaign=springofwinds-datasets) |
+
+Questions before purchase? → springofwinds@gmail.com
+
 ## License
 Apache-2.0
