@@ -1,5 +1,9 @@
 # Enterprise Synthetic Datasets (Strict JSONL)
 
+[![15-second demo: strict JSONL trajectories, 7-point rubric validation](assets/demo_preview.gif)](assets/demo_15s.mp4)
+
+*15s demo — strict JSONL structure, 7-point rubric validation (click for MP4).*
+
 Structured synthetic datasets for enterprise LLM alignment.
 All datasets follow deterministic schema and multi-turn consistency.
 
