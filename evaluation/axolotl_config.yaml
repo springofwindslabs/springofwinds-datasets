@@ -1,0 +1,46 @@
+# Minimal Axolotl smoke-test config for springofwindslabs conversation datasets
+# (mcp-agent-trajectory / function-calling-en / function-calling-ja)
+#
+# Purpose: confirm the trial data loads, tokenizes, and trains without
+# formatting errors in your pipeline. This is NOT a benchmark config.
+#
+# Usage:
+#   1. Download data.jsonl from the HF trial dataset
+#   2. Adjust `path` below
+#   3. axolotl train evaluation/axolotl_config.yaml
+
+base_model: Qwen/Qwen2.5-0.5B-Instruct   # small on purpose (smoke test)
+
+datasets:
+  - path: ./data.jsonl                    # trial file (50 rows)
+    type: chat_template
+    field_messages: conversations
+    message_property_mappings:
+      role: from
+      content: value
+    roles:
+      user: ["user", "human"]
+      assistant: ["assistant", "gpt"]
+      tool: ["tool", "observation"]
+
+chat_template: qwen_25
+
+sequence_len: 4096
+sample_packing: false
+
+adapter: lora
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_linear: true
+
+micro_batch_size: 1
+gradient_accumulation_steps: 4
+num_epochs: 1
+learning_rate: 1e-4
+optimizer: adamw_torch
+lr_scheduler: cosine
+
+bf16: auto
+output_dir: ./out-smoke-test
+logging_steps: 1
