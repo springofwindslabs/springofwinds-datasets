@@ -24,3 +24,9 @@ See `samples/` for a 5-row preview.
 
 ## License
 Apache-2.0
+
+---
+
+### Enterprise Procurement
+For licensing, corporate invoicing, procurement review, or custom commercial agreements:
+✉️ springofwindslabs@gmail.com

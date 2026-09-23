@@ -80,3 +80,9 @@ See [CHANGELOG.md](CHANGELOG.md) for dataset and repository updates.
 
 ## License
 Apache-2.0
+
+---
+
+### Enterprise Procurement
+For licensing, corporate invoicing, procurement review, or custom commercial agreements:
+✉️ springofwindslabs@gmail.com
