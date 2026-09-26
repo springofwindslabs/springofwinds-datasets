@@ -1,5 +1,24 @@
 # Enterprise Synthetic Datasets (Strict JSONL)
 
+![Schema Compliance](https://img.shields.io/badge/Schema_Compliance-100.00%25-brightgreen)
+![JSON Validity](https://img.shields.io/badge/JSON_Validity-100.00%25-brightgreen)
+![Rows Validated](https://img.shields.io/badge/Rows_Validated-28%2C922-blue)
+![Tool--Call Integrity](https://img.shields.io/badge/Tool--Call_Integrity-declared--tools--only-blue)
+
+## Validation Results (full corpus, measured 2026-09-27)
+
+| Metric | Result | How it's measured |
+|---|---:|---|
+| **JSON validity** | 100.00% (0 / 28,922 invalid) | every line parsed as strict JSON |
+| **Schema compliance** | 100.00% (28,922 / 28,922) | deterministic validator, 100% of rows — no sampling |
+| **Function-calling integrity** | 100.00% | every call uses declared tools & declared argument keys only |
+| **MCP trajectory structure** | 100.00% | role alternation + recovery-step structure enforced |
+| **CoT step structure** | 100.00% | `reasoning_steps` ≥ 3, provision-grounded conclusion |
+
+Evidence & reproduction: **[evaluation/EVALS.md](evaluation/EVALS.md)** ·
+**[evaluation/validate_jsonl.py](evaluation/validate_jsonl.py)** (stdlib-only — verify our numbers on your copy) ·
+**[evaluation/SAMPLE_ANALYSIS.md](evaluation/SAMPLE_ANALYSIS.md)**
+
 [![15-second demo: strict JSONL trajectories, 7-point rubric validation](assets/demo_preview.gif)](assets/demo_15s.mp4)
 
 *15s demo — strict JSONL structure, 7-point rubric validation (click for MP4).*
