@@ -32,6 +32,27 @@ Each 50-row HF trial exists to let you confirm three things on your own stack **
 Reproducible recipes (metrics script, Axolotl smoke-test config, Unsloth loading check):
 ➔ **[evaluation/](evaluation/)**
 
+## Validation evidence (measured, 100% of rows)
+
+We validate **every shipped row** — not a sample — with a deterministic schema
+validator before release. Latest full-corpus measurement:
+
+| Metric | Value |
+|---|---|
+| Rows validated (all shipped editions) | **28,922** |
+| Schema validation pass rate | **100.00%** |
+| Invalid JSON rows | **0** |
+| Measurement date | 2026-09-27 |
+
+- Full per-edition breakdown: **[evaluation/EVALS.md](evaluation/EVALS.md)**
+- Annotated row-by-row walkthroughs: **[evaluation/SAMPLE_ANALYSIS.md](evaluation/SAMPLE_ANALYSIS.md)**
+- Reproduce it yourself (stdlib-only, no dependencies): **[evaluation/validate_jsonl.py](evaluation/validate_jsonl.py)**
+- Machine-readable summary: **[evaluation/evals_summary.json](evaluation/evals_summary.json)**
+
+The validators themselves are regression-tested with mutation smoke suites
+(23 corruption classes must be caught: phantom tools, undeclared argument keys,
+broken step ordering, contradictory audit records).
+
 ## Guarantees vs. non-guarantees
 
 | Guaranteed (verifiable from the data) | Not guaranteed |

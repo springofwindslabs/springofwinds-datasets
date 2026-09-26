@@ -2,6 +2,13 @@
 
 Minimal, reproducible recipes to evaluate the free 50-row trials **before** purchasing full volumes.
 
+## Validation evidence (full corpus)
+
+- **[EVALS.md](EVALS.md)** — measured pass rates for **all 28,922 shipped rows** (100.00%, 2026-09-27)
+- **[SAMPLE_ANALYSIS.md](SAMPLE_ANALYSIS.md)** — annotated sample walkthroughs per track
+- **[validate_jsonl.py](validate_jsonl.py)** — stdlib-only validator: reproduce our numbers on your copy
+- **[evals_summary.json](evals_summary.json)** — machine-readable summary
+
 ## What the trial is for
 
 The 50-row trial exists to let you verify three things on your own stack:

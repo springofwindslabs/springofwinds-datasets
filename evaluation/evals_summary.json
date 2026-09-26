@@ -1,0 +1,136 @@
+{
+  "measured_at": "2026-09-27",
+  "total_rows": 28922,
+  "total_pass": 28922,
+  "pass_rate": 100.0,
+  "editions": [
+    {
+      "total": 2190,
+      "ok": 2190,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot1)",
+      "track": "agent_cot"
+    },
+    {
+      "total": 1521,
+      "ok": 1521,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot1)",
+      "track": "function_calling"
+    },
+    {
+      "total": 1808,
+      "ok": 1808,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot1)",
+      "track": "function_calling_ja"
+    },
+    {
+      "total": 1003,
+      "ok": 1003,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot1)",
+      "track": "mcp_tool_use"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot1)",
+      "track": "agent_cot"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot1)",
+      "track": "function_calling"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot1)",
+      "track": "function_calling_ja"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot1)",
+      "track": "mcp_tool_use"
+    },
+    {
+      "total": 1000,
+      "ok": 1000,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot2)",
+      "track": "agent_cot"
+    },
+    {
+      "total": 1000,
+      "ok": 1000,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot2)",
+      "track": "function_calling"
+    },
+    {
+      "total": 1000,
+      "ok": 1000,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot2)",
+      "track": "function_calling_ja"
+    },
+    {
+      "total": 1000,
+      "ok": 1000,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "1K Edition (Lot2)",
+      "track": "mcp_tool_use"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot2)",
+      "track": "agent_cot"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot2)",
+      "track": "function_calling"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot2)",
+      "track": "function_calling_ja"
+    },
+    {
+      "total": 2300,
+      "ok": 2300,
+      "bad_json": 0,
+      "errors": {},
+      "edition": "2K Edition (Lot2)",
+      "track": "mcp_tool_use"
+    }
+  ]
+}
