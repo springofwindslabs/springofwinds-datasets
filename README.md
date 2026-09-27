@@ -1,4 +1,18 @@
-# Enterprise Synthetic Datasets (Strict JSONL)
+# Stop LLM Agent Collapse Caused by State Corruption
+
+**Most agent failures are not tool failures. They are state failures.**
+The model believes the world is still valid — when reality has already changed.
+
+These datasets train **belief revision**, **state recovery**, and **autonomous replanning**:
+
+```text
+believed : 45/50 rooms synced       ← agent trusts a stale worker log
+tool     : "success", count: 0      ← silent no-op (the worst failure mode)
+verify   : GDS reports actual = 40  ← belief revision from live evidence
+replan   : re-sync rooms 41–50      ← autonomous recovery, no human in loop
+```
+
+*(real row from `state_drift_recovery` — every trajectory contains a divergence signal, a verification step, and an explicit replan)*
 
 ![Schema Compliance](https://img.shields.io/badge/Schema_Compliance-100.00%25-brightgreen)
 ![JSON Validity](https://img.shields.io/badge/JSON_Validity-100.00%25-brightgreen)
@@ -23,8 +37,7 @@ Evidence & reproduction: **[evaluation/EVALS.md](evaluation/EVALS.md)** ·
 
 *15s demo — strict JSONL structure, 7-point rubric validation (click for MP4).*
 
-Structured synthetic datasets for enterprise LLM alignment.
-All datasets follow deterministic schema and multi-turn consistency.
+Strict JSONL · deterministic schema · multi-turn consistency · error recovery included.
 
 ## Datasets
 | Dataset | Schema | Samples | Trial (HF) | Full (Gumroad) |
