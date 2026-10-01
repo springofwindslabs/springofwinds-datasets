@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agent Evaluation &amp; Reliability Datasets — springofwindslabs</title>
+<title>AI Agent Evaluation &amp; Reliability Datasets 窶・springofwindslabs</title>
 <meta name="description" content="Reproducible, schema-validated evaluation datasets for AI agent reliability: MCP tool use, function calling (EN/JA), and regulatory compliance reasoning. Measured validation evidence included.">
 <link rel="canonical" href="https://springofwindslabs.github.io/springofwinds-datasets/">
 
 <!-- ===== GA4 funnel instrumentation =====
-     Replace G-XXXXXXXXXX with your GA4 Measurement ID to activate.
+     Replace G-8HCEL6CKSS with your GA4 Measurement ID to activate.
      Funnel: commercial_view -> sample_view -> pricing_view -> purchase_click / contact_click -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HCEL6CKSS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-8HCEL6CKSS');
   gtag('event', 'commercial_view', { page_slug: 'commercial-hub' });
 
   function observeOnce(id, eventName) {
@@ -83,7 +83,7 @@
     <h1>AI Agent Evaluation &amp; Reliability Datasets</h1>
     <p class="lead">Reproducible, schema-validated datasets and evaluation specifications to stress-test autonomous LLM agents: tool failure recovery, state consistency, and compliance reasoning.</p>
     <p style="margin-top:14px">
-      <span class="badge">100% synthetic — no PII, no scraped content</span>
+      <span class="badge">100% synthetic 窶・no PII, no scraped content</span>
       <span class="badge">28,922 rows validated, 100% pass</span>
       <span class="badge">SHA-256 provenance manifests</span>
       <span class="badge">Apache-2.0 free samples</span>
@@ -100,12 +100,12 @@
       <tr><th>Failure mode</th><th>What is tested</th><th>Dataset family</th></tr>
       <tr>
         <td><strong>Silent state corruption</strong></td>
-        <td>Agent trusts stale state after a tool returns <code>"success"</code> with a no-op result — belief revision and autonomous replanning required.</td>
+        <td>Agent trusts stale state after a tool returns <code>"success"</code> with a no-op result 窶・belief revision and autonomous replanning required.</td>
         <td>MCP Agent Trajectory</td>
       </tr>
       <tr>
         <td><strong>Runtime exceptions</strong></td>
-        <td>403 insufficient scope, 429 rate-limit backoff, resource lock conflicts — recovery sequences, not just happy paths.</td>
+        <td>403 insufficient scope, 429 rate-limit backoff, resource lock conflicts 窶・recovery sequences, not just happy paths.</td>
         <td>MCP / Function Calling</td>
       </tr>
       <tr>
@@ -131,7 +131,7 @@
 <section id="evidence">
   <div class="wrap">
     <h2>2. Measured validation evidence</h2>
-    <p>Every number below is produced by running <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a> (stdlib-only, included in the repository) against the shipped dataset files. <strong>No sampling — 100% of rows are validated.</strong> Last measured: 2026-09-27.</p>
+    <p>Every number below is produced by running <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a> (stdlib-only, included in the repository) against the shipped dataset files. <strong>No sampling 窶・100% of rows are validated.</strong> Last measured: 2026-09-27.</p>
     <table>
       <tr><th>Metric</th><th>Result</th><th>Methodology</th></tr>
       <tr>
@@ -152,7 +152,7 @@
       <tr>
         <td>Near-duplicate rate</td>
         <td class="num ok">0 at threshold</td>
-        <td>3-gram Jaccard ≥ 0.85 exclusion vs. all prior rows incl. shipped lots</td>
+        <td>3-gram Jaccard 竕･ 0.85 exclusion vs. all prior rows incl. shipped lots</td>
       </tr>
       <tr>
         <td>Validator self-test</td>
@@ -160,9 +160,9 @@
         <td>Gold rows must pass; deliberately corrupted variants must be caught</td>
       </tr>
     </table>
-    <p>Full per-lot breakdown: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">evaluation/EVALS.md</a> · Reproduce locally:</p>
+    <p>Full per-lot breakdown: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">evaluation/EVALS.md</a> ﾂｷ Reproduce locally:</p>
     <pre>python validate_jsonl.py --track mcp_tool_use path/to/dataset.jsonl</pre>
-    <h3>Try before anything else — free 50-row samples (Apache-2.0)</h3>
+    <h3>Try before anything else 窶・free 50-row samples (Apache-2.0)</h3>
     <p>The free samples use the <em>same schema</em> as the full commercial datasets, so you can wire them into your evaluation harness (Axolotl, Unsloth, custom) first:</p>
     <ul>
       <li><a href="https://huggingface.co/datasets/springofwindslabs/mcp-agent-trajectory-benchmark">MCP Agent Trajectory Benchmark</a></li>
@@ -182,9 +182,9 @@
       <tr><td>Rows</td><td>50 per track</td><td>1,000+ per track</td><td>2,300+ per track, non-overlapping with 1K</td></tr>
       <tr><td>License</td><td>Apache-2.0</td><td colspan="2">Perpetual commercial license (non-redistributable)</td></tr>
       <tr><td>Schema validation report</td><td>Public (EVALS.md)</td><td colspan="2">Included per delivery (stats.json)</td></tr>
-      <tr><td>SHA-256 integrity manifest</td><td>—</td><td colspan="2">Included (SHA256SUMS.txt)</td></tr>
-      <tr><td>Overlap guarantee</td><td>—</td><td colspan="2">Hash + ID + 3-gram Jaccard audited against all prior lots</td></tr>
-      <tr><td>Enterprise invoicing / NDA</td><td>—</td><td colspan="2">Available on request</td></tr>
+      <tr><td>SHA-256 integrity manifest</td><td>窶・/td><td colspan="2">Included (SHA256SUMS.txt)</td></tr>
+      <tr><td>Overlap guarantee</td><td>窶・/td><td colspan="2">Hash + ID + 3-gram Jaccard audited against all prior lots</td></tr>
+      <tr><td>Enterprise invoicing / NDA</td><td>窶・/td><td colspan="2">Available on request</td></tr>
     </table>
   </div>
 </section>
@@ -200,9 +200,9 @@
         <ul>
           <li>Multi-turn MCP tool-use trajectories</li>
           <li>403 / 429 / lock-conflict recovery</li>
-          <li>1K standard · 2K+ extended lots</li>
+          <li>1K standard ﾂｷ 2K+ extended lots</li>
         </ul>
-        <p class="price">Platform price — see gateway</p>
+        <p class="price">Platform price 窶・see gateway</p>
         <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/mcp-agent-trajectory?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=mcp"
            onclick="trackClick('purchase_click','mcp_tool_use')">Acquire license</a>
       </div>
@@ -211,9 +211,9 @@
         <ul>
           <li>Argument-level correctness under changing state</li>
           <li>Strict schema, error-recovery rows</li>
-          <li>1K standard · 2K+ extended lots</li>
+          <li>1K standard ﾂｷ 2K+ extended lots</li>
         </ul>
-        <p class="price">Platform price — see gateway</p>
+        <p class="price">Platform price 窶・see gateway</p>
         <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-en?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=fc_en"
            onclick="trackClick('purchase_click','function_calling_en')">Acquire license</a>
       </div>
@@ -222,9 +222,9 @@
         <ul>
           <li>Japanese high-context tool routing</li>
           <li>Honorifics, entity ambiguity coverage</li>
-          <li>1K standard · 2K+ extended lots</li>
+          <li>1K standard ﾂｷ 2K+ extended lots</li>
         </ul>
-        <p class="price">Platform price — see gateway</p>
+        <p class="price">Platform price 窶・see gateway</p>
         <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-ja?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=fc_ja"
            onclick="trackClick('purchase_click','function_calling_ja')">Acquire license</a>
       </div>
@@ -233,9 +233,9 @@
         <ul>
           <li>Multi-jurisdictional audit reasoning</li>
           <li>Grounded conclusions, cited provisions</li>
-          <li>1K standard · 2K+ extended lots</li>
+          <li>1K standard ﾂｷ 2K+ extended lots</li>
         </ul>
-        <p class="price">Platform price — see gateway</p>
+        <p class="price">Platform price 窶・see gateway</p>
         <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/regulatory-compliance-cot?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=cot"
            onclick="trackClick('purchase_click','regulatory_cot')">Acquire license</a>
       </div>
@@ -261,21 +261,21 @@
     <h3>License terms</h3>
     <p>Commercial packages grant perpetual organizational usage rights for model training, evaluation, and internal tooling. Standalone redistribution of raw data is prohibited. Free samples are Apache-2.0.</p>
     <h3>Is the data safe for commercial training?</h3>
-    <p>Yes. All records are 100% synthetic — no customer data, no scraped content, no PII, no copyrighted material. Each commercial delivery ships with a SHA-256 integrity manifest for audit trails.</p>
+    <p>Yes. All records are 100% synthetic 窶・no customer data, no scraped content, no PII, no copyrighted material. Each commercial delivery ships with a SHA-256 integrity manifest for audit trails.</p>
     <h3>How is quality verified?</h3>
-    <p>A multi-stage pipeline: generation-time schema gating → deterministic structural validation (declared tools/arguments only, strict role alternation) → 3-gram Jaccard ≥ 0.85 dedup against all shipped lots → independent LLM scoring → final review. The deterministic stage is public and reproducible (<a href="https://github.com/springofwindslabs/springofwinds-datasets/tree/main/evaluation">evaluation/</a>).</p>
+    <p>A multi-stage pipeline: generation-time schema gating 竊・deterministic structural validation (declared tools/arguments only, strict role alternation) 竊・3-gram Jaccard 竕･ 0.85 dedup against all shipped lots 竊・independent LLM scoring 竊・final review. The deterministic stage is public and reproducible (<a href="https://github.com/springofwindslabs/springofwinds-datasets/tree/main/evaluation">evaluation/</a>).</p>
     <h3>Can I evaluate before purchasing?</h3>
-    <p>Yes — run the free 50-row samples through your pipeline first. They share the exact schema of the full datasets.</p>
+    <p>Yes 窶・run the free 50-row samples through your pipeline first. They share the exact schema of the full datasets.</p>
     <h3>Do new lots overlap with ones I already bought?</h3>
-    <p>No. Every new lot is audited (hash, ID, 3-gram Jaccard) against previously shipped lots — no budget is spent twice on the same row.</p>
+    <p>No. Every new lot is audited (hash, ID, 3-gram Jaccard) against previously shipped lots 窶・no budget is spent twice on the same row.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <strong>springofwindslabs</strong> — synthetic evaluation data for agent reliability.<br>
-    Free datasets: <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> ·
-    Code &amp; validation tooling: <a href="https://github.com/springofwindslabs/springofwinds-datasets">GitHub</a> ·
+    <strong>springofwindslabs</strong> 窶・synthetic evaluation data for agent reliability.<br>
+    Free datasets: <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> ﾂｷ
+    Code &amp; validation tooling: <a href="https://github.com/springofwindslabs/springofwinds-datasets">GitHub</a> ﾂｷ
     Contact: <a href="mailto:springofwindslabs@gmail.com">springofwindslabs@gmail.com</a>
   </div>
 </footer>
