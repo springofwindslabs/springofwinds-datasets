@@ -34,6 +34,7 @@
   }
   document.addEventListener('DOMContentLoaded', function() {
     observeOnce('evidence', 'sample_view');
+    observeOnce('sample', 'trajectory_view');
     observeOnce('packages', 'pricing_view');
   });
   function trackClick(kind, pkg) {
@@ -173,10 +174,68 @@
   </div>
 </section>
 
-<!-- 3. Free vs commercial -->
+<!-- 3. Real shipped sample -->
+<section id="sample">
+  <div class="wrap">
+    <h2>3. One row, verbatim, from a shipped lot</h2>
+    <p>This is row <code>ecom_research_pricing_retry_001</code> from the MCP Agent Trajectory 1K commercial lot — <strong>unedited, exactly as delivered</strong>. It shows the core training signal: a runtime failure, a strategy revision, and a verified recovery across chained tool calls.</p>
+    <table>
+      <tr><th style="width:12%">Turn</th><th>Content (verbatim)</th><th style="width:30%">What this trains</th></tr>
+      <tr>
+        <td><code>user</code></td>
+        <td class="mono-cell">I'm looking at a competitor, 'ShopFlow Pro'. Can you find their monthly subscription pricing for the 'Enterprise' plan?</td>
+        <td class="muted">Open-ended task requiring multi-step tool use</td>
+      </tr>
+      <tr>
+        <td><code>assistant</code></td>
+        <td><pre style="margin:0">{"name": "web_search", "arguments":
+ {"query": "ShopFlow Pro Enterprise plan pricing"}}</pre></td>
+        <td class="muted">Strict tool-call JSON — declared tool, declared argument keys only</td>
+      </tr>
+      <tr>
+        <td><code>tool</code></td>
+        <td><pre style="margin:0">{"error": {"code": "429", "message":
+ "Rate limit exceeded. Please wait before retrying."}}</pre></td>
+        <td><strong>Injected failure.</strong> Most datasets stop at happy paths — this is where ours begins.</td>
+      </tr>
+      <tr>
+        <td><code>assistant</code></td>
+        <td><pre style="margin:0">{"name": "web_search", "arguments":
+ {"query": "ShopFlow Pro pricing page"}}</pre></td>
+        <td><strong>Recovery, not verbatim retry.</strong> The query is revised (broader target page), not blindly re-sent — verbatim retries fail validation.</td>
+      </tr>
+      <tr>
+        <td><code>tool</code></td>
+        <td><pre style="margin:0">{"results": [{"title": "ShopFlow Pro - Pricing Plans",
+ "link": "https://shopflowpro.example.com/pricing"}]}</pre></td>
+        <td class="muted">Partial progress — a page, not yet the answer</td>
+      </tr>
+      <tr>
+        <td><code>assistant</code></td>
+        <td><pre style="margin:0">{"name": "scrape_page", "arguments":
+ {"url": "https://shopflowpro.example.com/pricing"}}</pre></td>
+        <td class="muted">Chained second tool, arguments grounded in the prior result — not hallucinated</td>
+      </tr>
+      <tr>
+        <td><code>tool</code></td>
+        <td><pre style="margin:0">{"content": "Basic: $49/mo. Pro: $99/mo.
+ Enterprise: $299/mo. ..."}</pre></td>
+        <td class="muted">Ground truth arrives</td>
+      </tr>
+      <tr>
+        <td><code>assistant</code></td>
+        <td class="mono-cell">The ShopFlow Pro Enterprise plan is priced at $299 per month.</td>
+        <td><strong>Grounded final answer</strong> — matches tool output exactly; ungrounded numbers fail validation</td>
+      </tr>
+    </table>
+    <p class="muted">The deterministic validator enforces on every row what you see here: tool calls reference declared tools and argument keys only, every <code>tool</code> turn follows a valid call, recovery differs from the failed attempt, and the final answer is grounded in returned data. All domains are synthetic (<code>example.com</code>) — no scraped content, no PII. Run it yourself: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a>.</p>
+  </div>
+</section>
+
+<!-- 4. Free vs commercial -->
 <section id="compare">
   <div class="wrap">
-    <h2>3. Free sample vs. commercial package</h2>
+    <h2>4. Free sample vs. commercial package</h2>
     <table>
       <tr><th></th><th>Free sample (Hugging Face)</th><th>Standard 1K</th><th>Extended 2K+</th></tr>
       <tr><td>Rows</td><td>50 per track</td><td>1,000+ per track</td><td>2,300+ per track, non-overlapping with 1K</td></tr>
@@ -189,14 +248,15 @@
   </div>
 </section>
 
-<!-- 4. Packages -->
+<!-- 5. Packages -->
 <section id="packages">
   <div class="wrap">
-    <h2>4. Packages &amp; acquisition</h2>
+    <h2>5. Packages &amp; acquisition</h2>
     <p class="muted">Card settlement via Gumroad. Corporate invoicing, NDA, and wire transfer available by inquiry.</p>
     <div class="cards">
       <div class="card">
         <h3>MCP Agent Trajectory</h3>
+        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> agents trust stale state after silent no-op "successes" and collapse mid-trajectory.</p>
         <ul>
           <li>Multi-turn MCP tool-use trajectories</li>
           <li>403 / 429 / lock-conflict recovery</li>
@@ -208,6 +268,7 @@
       </div>
       <div class="card">
         <h3>Function Calling (EN)</h3>
+        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> schema drift under multi-turn load — undeclared arguments and phantom tools slip into production.</p>
         <ul>
           <li>Argument-level correctness under changing state</li>
           <li>Strict schema, error-recovery rows</li>
@@ -219,6 +280,7 @@
       </div>
       <div class="card">
         <h3>Function Calling (JA)</h3>
+        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> Japanese honorifics and entity double-meanings break tool routing that passes English benchmarks.</p>
         <ul>
           <li>Japanese high-context tool routing</li>
           <li>Honorifics, entity ambiguity coverage</li>
@@ -230,6 +292,7 @@
       </div>
       <div class="card">
         <h3>Regulatory Compliance CoT</h3>
+        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> models cite the right regulation and still reach the wrong conclusion — reasoning failures, not retrieval failures.</p>
         <ul>
           <li>Multi-jurisdictional audit reasoning</li>
           <li>Grounded conclusions, cited provisions</li>
@@ -254,10 +317,10 @@
   </div>
 </section>
 
-<!-- 5. Licensing / FAQ -->
+<!-- 6. Licensing / FAQ -->
 <section id="faq">
   <div class="wrap">
-    <h2>5. Licensing &amp; FAQ</h2>
+    <h2>6. Licensing &amp; FAQ</h2>
     <h3>License terms</h3>
     <p>Commercial packages grant perpetual organizational usage rights for model training, evaluation, and internal tooling. Standalone redistribution of raw data is prohibited. Free samples are Apache-2.0.</p>
     <h3>Is the data safe for commercial training?</h3>
