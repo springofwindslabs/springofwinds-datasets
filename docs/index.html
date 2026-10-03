@@ -42,6 +42,65 @@
   }
 </script>
 
+<!-- Structured data: Google Dataset Search / rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org",
+      "name": "springofwindslabs",
+      "url": "https://springofwindslabs.github.io/springofwinds-datasets/",
+      "sameAs": [
+        "https://github.com/springofwindslabs",
+        "https://huggingface.co/springofwindslabs"
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "MCP Agent Trajectory Benchmark (Free Sample)",
+      "description": "50 synthetic multi-turn MCP tool-use trajectories with 403/429/lock-conflict error-recovery rows. Strict JSONL schema, 100% deterministic validation pass. Free sample of the commercial evaluation lots.",
+      "url": "https://huggingface.co/datasets/springofwindslabs/mcp-agent-trajectory-benchmark",
+      "isAccessibleForFree": true,
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "creator": { "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org" },
+      "keywords": ["AI agents", "MCP", "tool use", "error recovery", "LLM evaluation", "synthetic data"]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Function Calling EN (Free Sample)",
+      "description": "50 synthetic English function-calling rows with strict argument-level schema validation and error-recovery coverage. Free sample of the commercial evaluation lots.",
+      "url": "https://huggingface.co/datasets/springofwindslabs/function-calling-en-trial",
+      "isAccessibleForFree": true,
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "creator": { "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org" },
+      "keywords": ["function calling", "LLM fine-tuning", "schema validation", "synthetic data"]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Function Calling JA (Free Sample)",
+      "description": "50 synthetic Japanese function-calling rows covering honorifics and high-context tool routing. Free sample of the commercial evaluation lots.",
+      "url": "https://huggingface.co/datasets/springofwindslabs/function-calling-ja-trial",
+      "isAccessibleForFree": true,
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "creator": { "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org" },
+      "keywords": ["function calling", "Japanese NLP", "tool routing", "synthetic data"]
+    },
+    {
+      "@type": "Dataset",
+      "name": "Regulatory Compliance CoT (Free Sample)",
+      "description": "50 synthetic multi-jurisdictional compliance reasoning rows with grounded conclusions and cited provisions. Free sample of the commercial evaluation lots.",
+      "url": "https://huggingface.co/datasets/springofwindslabs/regulatory-compliance-cot-trial",
+      "isAccessibleForFree": true,
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "creator": { "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org" },
+      "keywords": ["regulatory compliance", "chain of thought", "LLM evaluation", "synthetic data"]
+    }
+  ]
+}
+</script>
+
 <style>
   :root {
     --ink:#1a202c; --sub:#4a5568; --line:#e2e8f0; --accent:#2b6cb0;
@@ -333,7 +392,19 @@
     <p>No. Every new lot is audited (hash, ID, 3-gram Jaccard) against previously shipped lots 窶・no budget is spent twice on the same row.</p>
   </div>
 </section>
-
+<!-- 7. Release notes -->
+<section id="releases">
+  <div class="wrap">
+    <h2>7. Release notes</h2>
+    <p class="muted">This catalog is actively maintained. Dates below are actual shipment and measurement dates.</p>
+    <table>
+      <tr><th style="width:18%">Date</th><th>Release</th></tr>
+      <tr><td>2026-10-02</td><td>Evidence hub launched with GA4-instrumented funnel. Published a verbatim failure→recovery row from a shipped commercial lot (<code>ecom_research_pricing_retry_001</code>).</td></tr>
+      <tr><td>2026-09-27</td><td>Full-corpus deterministic validation measured: <strong>28,922 / 28,922 rows, 100.00% schema pass, 0 invalid JSON</strong>. Validator published (<a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a>).</td></tr>
+      <tr><td>2026-09-16 / 17</td><td>Commercial 1K v1.1 and 2K+ extended lots finalized for all four tracks, with cross-lot 3-gram Jaccard dedup audit (zero overlap between tiers).</td></tr>
+    </table>
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <strong>springofwindslabs</strong> 窶・synthetic evaluation data for agent reliability.<br>
