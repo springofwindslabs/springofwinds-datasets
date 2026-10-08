@@ -139,3 +139,9 @@ Apache-2.0
 ### Enterprise Procurement
 For licensing, corporate invoicing, procurement review, or custom commercial agreements:
 ✉️ springofwindslabs@gmail.com
+
+<!-- repo-doctor-tools -->
+## Tools
+
+**🩺 [repo-doctor](https://github.com/springofwindslabs/repo-doctor)** — Is your repo ready for AI coding agents?
+One-command, zero-dependency CLI scoring 7 axes (AI readiness, docs, secrets exposure, tests/CI, deps, hygiene, git history). Free & MIT; [PRO edition](https://springofwindslabs.gumroad.com/l/repodoctor?utm_source=github&utm_medium=profile&utm_campaign=repo_doctor_launch) adds HTML dashboard, CI gate & SVG badge ($19 one-time).
