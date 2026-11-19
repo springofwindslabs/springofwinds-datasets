@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#38c6e8"/></marker></defs>
+<rect width="1200" height="240" fill="#0b1220"/>
+<text x="24" y="36" font-family="sans-serif" font-size="15" fill="#8fb8d8" letter-spacing="2">PRODUCTION PIPELINE — 制作パイプライン</text>
+<g font-family="sans-serif">
+<g><rect x="20" y="70" width="200" height="110" rx="14" fill="#101c33" stroke="#38c6e8" stroke-width="1.5"/><text x="120" y="105" text-anchor="middle" font-size="22" fill="#38c6e8">1</text><text x="120" y="133" text-anchor="middle" font-size="16" font-weight="bold" fill="#eaf6ff">Generation</text><text x="120" y="157" text-anchor="middle" font-size="12" fill="#8fb8d8">スキーマに沿って生成</text></g>
+<line x1="224" y1="125" x2="252" y2="125" stroke="#38c6e8" stroke-width="2" marker-end="url(#ar)"/>
+<g><rect x="260" y="70" width="200" height="110" rx="14" fill="#101c33" stroke="#38c6e8" stroke-width="1.5"/><text x="360" y="105" text-anchor="middle" font-size="22" fill="#38c6e8">2</text><text x="360" y="133" text-anchor="middle" font-size="16" font-weight="bold" fill="#eaf6ff">Schema validation</text><text x="360" y="157" text-anchor="middle" font-size="12" fill="#8fb8d8">全行を機械検証</text></g>
+<line x1="464" y1="125" x2="492" y2="125" stroke="#38c6e8" stroke-width="2" marker-end="url(#ar)"/>
+<g><rect x="500" y="70" width="200" height="110" rx="14" fill="#101c33" stroke="#38c6e8" stroke-width="1.5"/><text x="600" y="105" text-anchor="middle" font-size="22" fill="#38c6e8">3</text><text x="600" y="133" text-anchor="middle" font-size="15" font-weight="bold" fill="#eaf6ff">Near-duplicate control</text><text x="600" y="157" text-anchor="middle" font-size="12" fill="#8fb8d8">類似レコードを排除</text></g>
+<line x1="704" y1="125" x2="732" y2="125" stroke="#38c6e8" stroke-width="2" marker-end="url(#ar)"/>
+<g><rect x="740" y="70" width="200" height="110" rx="14" fill="#101c33" stroke="#38c6e8" stroke-width="1.5"/><text x="840" y="105" text-anchor="middle" font-size="22" fill="#38c6e8">4</text><text x="840" y="133" text-anchor="middle" font-size="16" font-weight="bold" fill="#eaf6ff">Independent scoring</text><text x="840" y="157" text-anchor="middle" font-size="12" fill="#8fb8d8">別モデルで品質評価</text></g>
+<line x1="944" y1="125" x2="972" y2="125" stroke="#38c6e8" stroke-width="2" marker-end="url(#ar)"/>
+<g><rect x="980" y="70" width="200" height="110" rx="14" fill="#101c33" stroke="#38c6e8" stroke-width="1.5"/><text x="1080" y="105" text-anchor="middle" font-size="22" fill="#38c6e8">5</text><text x="1080" y="133" text-anchor="middle" font-size="16" font-weight="bold" fill="#eaf6ff">Frozen delivery lots</text><text x="1080" y="157" text-anchor="middle" font-size="12" fill="#8fb8d8">ロットを凍結して納品</text></g>
+</g>
+<text x="24" y="216" font-family="sans-serif" font-size="12" fill="#5f7f9d">Every record passes all five gates. No record ships unmeasured. — 全レコードが5つのゲートを通ります</text>
+</svg>
