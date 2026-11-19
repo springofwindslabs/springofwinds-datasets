@@ -1,5 +1,10 @@
 # Stop LLM Agent Collapse Caused by State Corruption
 
+- **Showcase (start here):** https://springofwindslabs.github.io/springofwinds-datasets/ — overview, measured results, and how to buy
+- **Measured pilot report:** https://springofwindslabs.github.io/springofwinds-datasets/pilot-report.html — failure recovery 1/60 → 34/60 after fine-tuning on this corpus (measured 2026-11-19)
+- **Datasets & free samples (Hugging Face):** https://huggingface.co/springofwindslabs
+- **Purchase (Gumroad):** https://springofwindslabs.gumroad.com/
+
 **Most agent failures are not tool failures. They are state failures.**
 The model believes the world is still valid — when reality has already changed.
 
