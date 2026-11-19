@@ -2,6 +2,11 @@
 
 All notable changes to the published datasets and this repository.
 
+## 2026-11-19
+- Documentation site: new showcase home page (measured pilot, catalogue with 1K prices, how it's made); previous evidence hub moved to `evidence.html`; self-pilot Run 1 report published as `pilot-report.html`
+- Full-corpus validation re-run on all lots: 28,922 / 28,922 rows, 100.00% schema pass (`evaluation/EVALS.md` updated)
+- README: Extended tier described as 1K lot + 2,300 non-overlapping rows; HF gating wording corrected
+
 ## 2026-09-22
 - Added `evaluation/` — reproducible evaluation recipe (programmatic metrics, Axolotl smoke-test config, Unsloth loading check)
 - README: commercial tier comparison table, guarantees / non-guarantees, trial purpose definition

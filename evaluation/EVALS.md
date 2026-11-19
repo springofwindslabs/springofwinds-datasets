@@ -1,6 +1,6 @@
 # Validation Evidence (measured, reproducible)
 
-_Last measured: 2026-09-27 — every number below is produced by running `validate_jsonl.py` against the shipped `dataset.jsonl` files. No sampling: 100% of rows are validated._
+_Last measured: 2026-11-19 — every number below is produced by running `validate_jsonl.py` against the shipped `dataset.jsonl` files. No sampling: 100% of rows are validated._
 
 ## Schema validation pass rate
 

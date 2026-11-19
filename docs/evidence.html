@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validation evidence — Spring of Winds Labs</title>
+<meta name="description" content="Measured validation evidence for Spring of Winds Labs agent training data: 28,922 rows, 100% schema pass, public validator, and a verbatim shipped row.">
+<link rel="canonical" href="https://springofwindslabs.github.io/springofwinds-datasets/evidence.html">
+<style>
+  :root {
+    --ink:#1a202c; --sub:#4a5568; --line:#e2e8f0; --accent:#2b6cb0;
+    --bg-soft:#f7fafc; --ok:#2f855a; --mono:ui-monospace,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Hiragino Sans",sans-serif;color:var(--ink);line-height:1.7}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  header{border-bottom:1px solid var(--line);padding:40px 0 28px}
+  header h1{margin:0 0 10px;font-size:1.7rem}
+  section{padding:36px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.3rem;margin:0 0 14px}
+  h3{font-size:1.05rem;margin:22px 0 8px}
+  .muted{color:var(--sub);font-size:.92rem}
+  table{border-collapse:collapse;width:100%;margin:12px 0}
+  th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;font-size:.93rem;vertical-align:top}
+  th{background:var(--bg-soft)}
+  td.num{font-variant-numeric:tabular-nums;text-align:right}
+  pre{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:12px;overflow-x:auto;font-family:var(--mono);font-size:.85rem;line-height:1.5}
+  code{font-family:var(--mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px;font-size:.9em}
+  footer{padding:32px 0 56px;color:var(--sub);font-size:.85rem}
+  .ok{color:var(--ok);font-weight:600}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="muted" style="margin:0 0 6px"><a href="./">&larr; Spring of Winds Labs</a></p>
+    <h1>Validation evidence</h1>
+    <p class="muted" style="margin:0">100% synthetic, no PII, no scraped content · 28,922 rows validated, 100% pass · SHA-256 provenance manifests · Apache-2.0 free samples</p>
+  </div>
+</header>
+
+<section id="evidence">
+  <div class="wrap">
+    <h2>Measured validation evidence</h2>
+    <p>Every number below is produced by running <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a> (stdlib-only, included in the repository) against the shipped dataset files. <strong>No sampling — 100% of rows are validated.</strong> Last measured: 2026-11-19.</p>
+    <table>
+      <tr><th>Metric</th><th>Result</th><th>Methodology</th></tr>
+      <tr><td>Schema validation pass rate</td><td class="num ok">28,922 / 28,922 (100.00%)</td><td>Deterministic structural validation of every row across all lots and editions</td></tr>
+      <tr><td>Invalid JSON rows</td><td class="num ok">0</td><td>Strict JSONL parsing, UTF-8, one sample per row</td></tr>
+      <tr><td>Phantom tool calls / undeclared arguments</td><td class="num ok">0 (fails the row)</td><td>Every call checked against declared tool + argument schema</td></tr>
+      <tr><td>Near-duplicate rate</td><td class="num ok">0 at threshold</td><td>3-gram Jaccard &ge; 0.85 exclusion vs. all prior rows incl. shipped lots</td></tr>
+      <tr><td>Validator self-test</td><td class="num ok">23 mutation classes</td><td>Gold rows must pass; deliberately corrupted variants must be caught</td></tr>
+    </table>
+    <p>Full per-lot breakdown: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">evaluation/EVALS.md</a> · Reproduce locally:</p>
+    <pre>python validate_jsonl.py --track mcp_tool_use path/to/dataset.jsonl</pre>
+    <h3>Free 50-row samples (Apache-2.0)</h3>
+    <p>The samples use the <em>same schema</em> as the full datasets, so you can wire them into your harness (Axolotl, Unsloth, custom) first. The MCP and CoT repositories use Hugging Face's information-sharing gate (access is automatic); the two Function Calling repositories are not gated.</p>
+    <ul>
+      <li><a href="https://huggingface.co/datasets/springofwindslabs/mcp-agent-trajectory-benchmark">MCP Agent Trajectory Benchmark</a></li>
+      <li><a href="https://huggingface.co/datasets/springofwindslabs/function-calling-en-trial">Function Calling EN</a></li>
+      <li><a href="https://huggingface.co/datasets/springofwindslabs/function-calling-ja-trial">Function Calling JA</a></li>
+      <li><a href="https://huggingface.co/datasets/springofwindslabs/regulatory-compliance-cot-trial">Regulatory Compliance CoT</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="sample">
+  <div class="wrap">
+    <h2>One row, verbatim, from a shipped lot</h2>
+    <p>Row <code>ecom_research_pricing_retry_001</code> from the MCP Agent Trajectory 1K commercial lot — <strong>unedited, exactly as delivered</strong>. It shows the core training signal: a runtime failure, a strategy revision, and a verified recovery across chained tool calls.</p>
+    <table>
+      <tr><th style="width:12%">Turn</th><th>Content (verbatim)</th><th style="width:30%">What this trains</th></tr>
+      <tr><td><code>user</code></td><td>I'm looking at a competitor, 'ShopFlow Pro'. Can you find their monthly subscription pricing for the 'Enterprise' plan?</td><td class="muted">Open-ended task requiring multi-step tool use</td></tr>
+      <tr><td><code>assistant</code></td><td><pre style="margin:0">{"name": "web_search", "arguments":
+ {"query": "ShopFlow Pro Enterprise plan pricing"}}</pre></td><td class="muted">Strict tool-call JSON — declared tool, declared argument keys only</td></tr>
+      <tr><td><code>tool</code></td><td><pre style="margin:0">{"error": {"code": "429", "message":
+ "Rate limit exceeded. Please wait before retrying."}}</pre></td><td><strong>Injected failure.</strong> Most datasets stop at happy paths — this is where ours begins.</td></tr>
+      <tr><td><code>assistant</code></td><td><pre style="margin:0">{"name": "web_search", "arguments":
+ {"query": "ShopFlow Pro pricing page"}}</pre></td><td><strong>Recovery, not verbatim retry.</strong> The query is revised, not blindly re-sent — verbatim retries fail validation.</td></tr>
+      <tr><td><code>tool</code></td><td><pre style="margin:0">{"results": [{"title": "ShopFlow Pro - Pricing Plans",
+ "link": "https://shopflowpro.example.com/pricing"}]}</pre></td><td class="muted">Partial progress — a page, not yet the answer</td></tr>
+      <tr><td><code>assistant</code></td><td><pre style="margin:0">{"name": "scrape_page", "arguments":
+ {"url": "https://shopflowpro.example.com/pricing"}}</pre></td><td class="muted">Chained second tool, arguments grounded in the prior result</td></tr>
+      <tr><td><code>tool</code></td><td><pre style="margin:0">{"content": "Basic: $49/mo. Pro: $99/mo.
+ Enterprise: $299/mo. ..."}</pre></td><td class="muted">Ground truth arrives</td></tr>
+      <tr><td><code>assistant</code></td><td>The ShopFlow Pro Enterprise plan is priced at $299 per month.</td><td><strong>Grounded final answer</strong> — matches tool output exactly; ungrounded numbers fail validation</td></tr>
+    </table>
+    <p class="muted">All domains are synthetic (<code>example.com</code>) — no scraped content, no PII.</p>
+  </div>
+</section>
+
+<section id="compare">
+  <div class="wrap">
+    <h2>Free sample vs. commercial lots</h2>
+    <table>
+      <tr><th></th><th>Free sample (Hugging Face)</th><th>1K lot</th><th>Extended</th></tr>
+      <tr><td>Rows</td><td>50 per track</td><td>MCP 1,003 · others 1,000</td><td>1K lot + 2,300 non-overlapping rows (MCP 3,303 · others 3,300)</td></tr>
+      <tr><td>1K lot price</td><td>Free</td><td colspan="2">MCP $7,300 · FC-EN $6,400 · FC-JA $8,500 · CoT $12,500</td></tr>
+      <tr><td>Licence</td><td>Apache-2.0</td><td colspan="2">Perpetual, organization-wide, no redistribution</td></tr>
+      <tr><td>Schema validation report</td><td>Public (EVALS.md)</td><td colspan="2">Included per delivery (stats.json)</td></tr>
+      <tr><td>SHA-256 integrity manifest</td><td>—</td><td colspan="2">Included (SHA256SUMS.txt)</td></tr>
+      <tr><td>Overlap guarantee</td><td>—</td><td colspan="2">Hash + ID + 3-gram Jaccard audited against all prior lots</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="quality">
+  <div class="wrap">
+    <h2>How quality is verified</h2>
+    <p>Generation-time schema gating &rarr; deterministic structural validation (declared tools/arguments only, strict role alternation) &rarr; 3-gram Jaccard &ge; 0.85 de-duplication against all shipped lots &rarr; independent LLM scoring &rarr; final review. The deterministic stage is public and reproducible (<a href="https://github.com/springofwindslabs/springofwinds-datasets/tree/main/evaluation">evaluation/</a>).</p>
+    <p>New lots are audited (hash, ID, 3-gram Jaccard) against previously shipped lots, so no budget is spent twice on the same row.</p>
+  </div>
+</section>
+
+<section id="releases">
+  <div class="wrap">
+    <h2>Release notes</h2>
+    <p class="muted">Dates are actual shipment and measurement dates.</p>
+    <table>
+      <tr><th style="width:18%">Date</th><th>Release</th></tr>
+      <tr><td>2026-11-19</td><td>Validator re-run on all lots: <strong>28,922 / 28,922 rows, 100.00% schema pass, 0 invalid JSON</strong>. Self-pilot Run 1 report published (<a href="pilot-report.html">pilot-report.html</a>).</td></tr>
+      <tr><td>2026-10-02</td><td>Evidence hub launched. Published a verbatim failure&rarr;recovery row from a shipped commercial lot (<code>ecom_research_pricing_retry_001</code>).</td></tr>
+      <tr><td>2026-09-27</td><td>Full-corpus deterministic validation measured: 28,922 / 28,922 rows, 100.00% schema pass. Validator published.</td></tr>
+      <tr><td>2026-09-16 / 17</td><td>Commercial 1K v1.1 and Extended lots finalized for all four tracks, with cross-lot 3-gram Jaccard dedup audit.</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Spring of Winds Labs</strong> · <a href="./">Home</a> ·
+    <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> ·
+    <a href="https://github.com/springofwindslabs/springofwinds-datasets">GitHub</a> ·
+    <a href="mailto:springofwindslabs@gmail.com">springofwindslabs@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

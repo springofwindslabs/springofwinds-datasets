@@ -19,7 +19,7 @@ replan   : re-sync rooms 41–50      ← autonomous recovery, no human in loop
 ![Rows Validated](https://img.shields.io/badge/Rows_Validated-28%2C922-blue)
 ![Tool--Call Integrity](https://img.shields.io/badge/Tool--Call_Integrity-declared--tools--only-blue)
 
-## Validation Results (full corpus, measured 2026-09-27)
+## Validation Results (full corpus, measured 2026-11-19)
 
 | Metric | Result | How it's measured |
 |---|---:|---|
@@ -74,7 +74,7 @@ validator before release. Latest full-corpus measurement:
 | Rows validated (all shipped editions) | **28,922** |
 | Schema validation pass rate | **100.00%** |
 | Invalid JSON rows | **0** |
-| Measurement date | 2026-09-27 |
+| Measurement date | 2026-11-19 |
 
 - Full per-edition breakdown: **[evaluation/EVALS.md](evaluation/EVALS.md)**
 - Annotated row-by-row walkthroughs: **[evaluation/SAMPLE_ANALYSIS.md](evaluation/SAMPLE_ANALYSIS.md)**
@@ -98,14 +98,14 @@ broken step ordering, contradictory audit records).
 
 ## Commercial tiers (full versions)
 
-| Dataset | 1K Standard | 2K Extended (incl. 1K, 3,300+ total rows) | Notes |
+| Dataset | 1K Standard | Extended (1K lot + 2,300 non-overlapping rows) | Notes |
 |---|---|---|---|
-| MCP Agent Trajectory | $7,300 | $13,200 | multi-turn trajectories, error-recovery sequences (403 / 429 / locks) |
-| Function Calling EN | $6,400 | $11,400 | multi-turn tool calls, strictly-typed JSON arguments |
-| Function Calling JA | $8,500 | $15,300 | native-Japanese tool routing, honorifics / high-context |
-| Regulatory Compliance CoT | $12,500 | $22,500 | step-by-step compliance reasoning, auditable CoT traces |
+| MCP Agent Trajectory | $7,300 (1,003 rows) | 3,303 rows | multi-turn trajectories, error-recovery sequences (403 / 429 / locks) |
+| Function Calling EN | $6,400 (1,000 rows) | 3,300 rows | multi-turn tool calls, strictly-typed JSON arguments |
+| Function Calling JA | $8,500 (1,000 rows) | 3,300 rows | native-Japanese single-shot tool routing, honorifics / high-context |
+| Regulatory Compliance CoT | $12,500 (1,000 rows) | 3,300 rows | step-by-step compliance reasoning, auditable CoT traces |
 
-All tiers: perpetual, organization-wide commercial license - one-time purchase - `SHA256SUMS.txt` included - tiers are mutually exclusive (zero overlapping rows). Full license terms on each Gumroad page.
+Extended-tier pricing: see each Gumroad listing. All tiers: perpetual, organization-wide commercial license (no redistribution) - one-time purchase - `SHA256SUMS.txt` included - the 2,300 additional rows are non-overlapping with the 1K lot (hash / ID / 3-gram audited). Full license terms on each Gumroad page.
 
 ## Samples
 Each dataset directory includes a `samples/` folder with 5-row previews.
@@ -122,7 +122,7 @@ https://springofwindslabs.gumroad.com
 
 | Step | What you get | Link |
 |---|---|---|
-| 1. **Validate free** | 50-row trial per dataset (Apache-2.0, no gating) | [Hugging Face](https://huggingface.co/springofwindslabs) |
+| 1. **Validate free** | 50-row trial per dataset (Apache-2.0; the MCP and CoT repos use Hugging Face's information-sharing gate, the two Function Calling repos are not gated) | [Hugging Face](https://huggingface.co/springofwindslabs) |
 | 2. **Inspect schema** | `schema.json` + 5-row samples in this repo | [Datasets table above](#datasets) |
 | 3. **Go production** | 1,000+ row volumes, perpetual commercial license, instant delivery | [Gumroad](https://springofwindslabs.gumroad.com?utm_source=github&utm_medium=readme_funnel&utm_campaign=springofwinds-datasets) |
 

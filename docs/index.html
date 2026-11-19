@@ -1,22 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agent Evaluation &amp; Reliability Datasets 窶・springofwindslabs</title>
-<meta name="description" content="Reproducible, schema-validated evaluation datasets for AI agent reliability: MCP tool use, function calling (EN/JA), and regulatory compliance reasoning. Measured validation evidence included.">
+<title>Spring of Winds Labs — Agent training data you can verify before you trust</title>
+<meta name="description" content="Spring of Winds Labs is a small research lab in Japan. Schema-validated agent training data (MCP, function calling EN/JA, regulatory CoT) with published validation and a measured pilot on your own task.">
 <link rel="canonical" href="https://springofwindslabs.github.io/springofwinds-datasets/">
 
-<!-- ===== GA4 funnel instrumentation =====
-     Replace G-8HCEL6CKSS with your GA4 Measurement ID to activate.
-     Funnel: commercial_view -> sample_view -> pricing_view -> purchase_click / contact_click -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HCEL6CKSS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-8HCEL6CKSS');
-  gtag('event', 'commercial_view', { page_slug: 'commercial-hub' });
+  gtag('event', 'commercial_view', { page_slug: 'showcase' });
 
   function observeOnce(id, eventName) {
     var el = document.getElementById(id);
@@ -26,23 +23,22 @@
       entries.forEach(function(e) {
         if (e.isIntersecting && !fired) {
           fired = true;
-          gtag('event', eventName, { page_slug: 'commercial-hub' });
+          gtag('event', eventName, { page_slug: 'showcase' });
           obs.disconnect();
         }
       });
     }, { threshold: 0.4 }).observe(el);
   }
   document.addEventListener('DOMContentLoaded', function() {
-    observeOnce('evidence', 'sample_view');
-    observeOnce('sample', 'trajectory_view');
-    observeOnce('packages', 'pricing_view');
+    observeOnce('proof', 'sample_view');
+    observeOnce('pilot', 'trajectory_view');
+    observeOnce('catalogue', 'pricing_view');
   });
   function trackClick(kind, pkg) {
-    try { gtag('event', kind, { package: pkg, page_slug: 'commercial-hub' }); } catch (e) {}
+    try { gtag('event', kind, { package: pkg, page_slug: 'showcase' }); } catch (e) {}
   }
 </script>
 
-<!-- Structured data: Google Dataset Search / rich results -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,8 +46,10 @@
     {
       "@type": "Organization",
       "@id": "https://springofwindslabs.github.io/springofwinds-datasets/#org",
-      "name": "springofwindslabs",
+      "name": "Spring of Winds Labs",
       "url": "https://springofwindslabs.github.io/springofwinds-datasets/",
+      "email": "springofwindslabs@gmail.com",
+      "foundingDate": "2026",
       "sameAs": [
         "https://github.com/springofwindslabs",
         "https://huggingface.co/springofwindslabs"
@@ -70,7 +68,7 @@
     {
       "@type": "Dataset",
       "name": "Function Calling EN (Free Sample)",
-      "description": "50 synthetic English function-calling rows with strict argument-level schema validation and error-recovery coverage. Free sample of the commercial evaluation lots.",
+      "description": "50 synthetic English function-calling rows with strict argument-level schema validation. Free sample of the commercial evaluation lots.",
       "url": "https://huggingface.co/datasets/springofwindslabs/function-calling-en-trial",
       "isAccessibleForFree": true,
       "license": "https://www.apache.org/licenses/LICENSE-2.0",
@@ -80,7 +78,7 @@
     {
       "@type": "Dataset",
       "name": "Function Calling JA (Free Sample)",
-      "description": "50 synthetic Japanese function-calling rows covering honorifics and high-context tool routing. Free sample of the commercial evaluation lots.",
+      "description": "50 synthetic single-shot Japanese function-calling rows covering honorifics and high-context tool routing. Free sample of the commercial evaluation lots.",
       "url": "https://huggingface.co/datasets/springofwindslabs/function-calling-ja-trial",
       "isAccessibleForFree": true,
       "license": "https://www.apache.org/licenses/LICENSE-2.0",
@@ -103,326 +101,313 @@
 
 <style>
   :root {
-    --ink:#1a202c; --sub:#4a5568; --line:#e2e8f0; --accent:#2b6cb0;
-    --bg-soft:#f7fafc; --ok:#2f855a; --mono:ui-monospace,Consolas,monospace;
+    --ink:#16202c; --sub:#4a5568; --line:#e2e8f0; --accent:#2b6cb0; --accent-dark:#234e82;
+    --bg-soft:#f7fafc; --ok:#2f855a; --warn:#b7791f; --mono:ui-monospace,Consolas,monospace;
   }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,"Hiragino Sans",sans-serif;color:var(--ink);line-height:1.7}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
-  header{border-bottom:1px solid var(--line);padding:48px 0 32px}
-  header h1{margin:0 0 10px;font-size:1.8rem}
-  header p.lead{color:var(--sub);margin:0;font-size:1.05rem}
-  section{padding:40px 0;border-bottom:1px solid var(--line)}
-  h2{font-size:1.35rem;margin:0 0 16px}
-  h3{font-size:1.05rem;margin:24px 0 8px}
-  .muted{color:var(--sub);font-size:0.92rem}
-  table{border-collapse:collapse;width:100%;margin:12px 0}
-  th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;font-size:0.93rem}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  a{color:var(--accent)}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h1{font-size:2.3rem;line-height:1.2;margin:0 0 16px}
+  h2{font-size:1.6rem;margin:0 0 8px}
+  h3{font-size:1.1rem;margin:0 0 8px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--accent);font-weight:700;margin:0 0 8px}
+  .lead{font-size:1.12rem;color:var(--sub);margin:0 0 24px;max-width:720px}
+  .muted{color:var(--sub);font-size:.92rem}
+  nav.top{border-bottom:1px solid var(--line);padding:14px 0;font-size:.92rem}
+  nav.top .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  nav.top .brand{font-weight:700;color:var(--ink);text-decoration:none}
+  nav.top .links a{margin-left:18px;text-decoration:none;color:var(--sub)}
+  .hero{padding:72px 0 56px}
+  .btn{display:inline-block;padding:11px 20px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.95rem;text-align:center}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{border:1px solid var(--accent);color:var(--accent)}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .figure-slot{margin:28px 0 0}
+  .figure-slot img{max-width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block}
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:20px}
+  .stat{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--bg-soft)}
+  .stat b{display:block;font-size:1.5rem;line-height:1.2}
+  .stat span{font-size:.85rem;color:var(--sub)}
+  table{border-collapse:collapse;width:100%;margin:14px 0}
+  th,td{border:1px solid var(--line);padding:9px 13px;text-align:left;font-size:.93rem;vertical-align:top}
   th{background:var(--bg-soft)}
-  td.num{font-variant-numeric:tabular-nums;text-align:right}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px}
+  td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr.hl td{background:#f0fff4}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
   .card{border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column}
   .card h3{margin-top:0}
-  .card ul{padding-left:18px;margin:8px 0 16px;flex-grow:1}
-  .price{font-weight:700;margin:4px 0 12px}
-  .btn{display:inline-block;padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92rem;text-align:center}
-  .btn-primary{background:var(--accent);color:#fff}
-  .btn-ghost{border:1px solid var(--accent);color:var(--accent)}
-  .badge{display:inline-block;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:0.8rem;color:var(--sub);margin:0 6px 6px 0}
-  pre{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:14px;overflow-x:auto;font-family:var(--mono);font-size:0.85rem;line-height:1.5}
-  code{font-family:var(--mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px;font-size:0.9em}
-  footer{padding:32px 0 56px;color:var(--sub);font-size:0.85rem}
+  .card ul{padding-left:18px;margin:8px 0 14px;flex-grow:1}
+  .price{font-weight:700;font-size:1.15rem;margin:4px 0 2px}
+  .tag{display:inline-block;background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:.78rem;color:var(--sub);margin-bottom:8px}
+  .note{border-left:4px solid var(--warn);background:#fffaf0;padding:10px 16px;margin:18px 0;font-size:.95rem}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:16px 0}
+  .steps li{counter-increment:s;padding:0 0 12px 40px;position:relative}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;text-align:center;line-height:28px;font-size:.85rem;font-weight:700}
+  details{border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600}
+  code{font-family:var(--mono);background:var(--bg-soft);padding:1px 6px;border-radius:4px;font-size:.9em}
+  footer{padding:32px 0 56px;color:var(--sub);font-size:.88rem}
   .ok{color:var(--ok);font-weight:600}
-  a{color:var(--accent)}
+  @media (max-width:600px){h1{font-size:1.8rem}}
 </style>
 </head>
 <body>
 
-<header>
+<nav class="top">
   <div class="wrap">
-    <h1>AI Agent Evaluation &amp; Reliability Datasets</h1>
-    <p class="lead">Reproducible, schema-validated datasets and evaluation specifications to stress-test autonomous LLM agents: tool failure recovery, state consistency, and compliance reasoning.</p>
-    <p style="margin-top:14px">
-      <span class="badge">100% synthetic 窶・no PII, no scraped content</span>
-      <span class="badge">28,922 rows validated, 100% pass</span>
-      <span class="badge">SHA-256 provenance manifests</span>
-      <span class="badge">Apache-2.0 free samples</span>
-    </p>
+    <a class="brand" href="#top">Spring of Winds Labs</a>
+    <span class="links">
+      <a href="#pilot">Measured pilot</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#work">Work with us</a>
+      <a href="evidence.html">Evidence</a>
+    </span>
+  </div>
+</nav>
+
+<!-- 1. Hero -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Agent training data</p>
+    <h1>Training data you can verify before you trust.</h1>
+    <p class="lead">Spring of Winds Labs is a small research lab in Japan, founded in 2026. We build agent training data — and we publish the measurements to prove it.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#pilot" onclick="trackClick('pilot_click','hero')">See the measured pilot</a>
+      <a class="btn btn-ghost" href="#catalogue">Browse the datasets</a>
+    </div>
+    <!-- IMAGE SLOT (hero): not yet placed. Missing file: media-generation-portfolio-hero-0-ce021c02-d6bc-4799-b481-c9cc69b621bc.webp
+    <div class="figure-slot"><img src="assets/media-generation-portfolio-hero-0-ce021c02-d6bc-4799-b481-c9cc69b621bc.webp" alt="Spring of Winds Labs — verifiable agent training data" loading="eager"></div>
+    -->
   </div>
 </header>
 
-<!-- 1. What this evaluates -->
-<section id="scope">
+<!-- 2. Proof strip -->
+<section id="proof">
   <div class="wrap">
-    <h2>1. What this infrastructure evaluates</h2>
-    <p>Generic benchmarks measure clean execution paths. These datasets target the failure modes that actually break agents in production:</p>
-    <table>
-      <tr><th>Failure mode</th><th>What is tested</th><th>Dataset family</th></tr>
-      <tr>
-        <td><strong>Silent state corruption</strong></td>
-        <td>Agent trusts stale state after a tool returns <code>"success"</code> with a no-op result 窶・belief revision and autonomous replanning required.</td>
-        <td>MCP Agent Trajectory</td>
-      </tr>
-      <tr>
-        <td><strong>Runtime exceptions</strong></td>
-        <td>403 insufficient scope, 429 rate-limit backoff, resource lock conflicts 窶・recovery sequences, not just happy paths.</td>
-        <td>MCP / Function Calling</td>
-      </tr>
-      <tr>
-        <td><strong>Schema drift under multi-turn load</strong></td>
-        <td>Argument-level integrity across long runs: declared tools only, declared argument keys only, strict role alternation.</td>
-        <td>Function Calling EN / JA</td>
-      </tr>
-      <tr>
-        <td><strong>High-context Japanese tool routing</strong></td>
-        <td>Honorific variation, entity double-meaning, token-efficiency breakdowns specific to Japanese.</td>
-        <td>Function Calling JA</td>
-      </tr>
-      <tr>
-        <td><strong>Compliance reasoning</strong></td>
-        <td>Multi-jurisdictional step-by-step audit reasoning (financial compliance, data privacy) with grounded conclusions.</td>
-        <td>Regulatory Compliance CoT</td>
-      </tr>
-    </table>
+    <p class="eyebrow">Proof</p>
+    <h2>Measured, not claimed</h2>
+    <div class="strip">
+      <div class="stat"><b>28,922</b><span>validated rows (every shipped row, no sampling)</span></div>
+      <div class="stat"><b>100%</b><span>schema pass, last measured 2026-11-19</span></div>
+      <div class="stat"><b><a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py">Public validator</a></b><span>stdlib-only; run it on your own copy</span></div>
+      <div class="stat"><b>1,300+</b><span>downloads on Hugging Face (Nov 2026)</span></div>
+    </div>
+    <p class="muted" style="margin-top:16px">Per-lot results: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">EVALS.md</a> · Details and a verbatim row from a shipped lot: <a href="evidence.html">evidence page</a>.</p>
   </div>
 </section>
 
-<!-- 2. Measured evidence -->
-<section id="evidence">
+<!-- 3. Measured pilot -->
+<section id="pilot">
   <div class="wrap">
-    <h2>2. Measured validation evidence</h2>
-    <p>Every number below is produced by running <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a> (stdlib-only, included in the repository) against the shipped dataset files. <strong>No sampling 窶・100% of rows are validated.</strong> Last measured: 2026-09-27.</p>
+    <p class="eyebrow">Measured pilot — $990</p>
+    <h2>Know what the data does on your task before you license it</h2>
+    <p class="lead">You give us your tasks. We measure your model with and without our data, and deliver the report. The price is fixed at $990.</p>
+
+    <ol class="steps">
+      <li><strong>Your task.</strong> You define a set of tasks that matter to your agent.</li>
+      <li><strong>With / without.</strong> We measure the same tasks on the base model and on the model trained with our data.</li>
+      <li><strong>The report.</strong> You receive a written report with the three metrics below.</li>
+    </ol>
+
     <table>
-      <tr><th>Metric</th><th>Result</th><th>Methodology</th></tr>
-      <tr>
-        <td>Schema validation pass rate</td>
-        <td class="num ok">28,922 / 28,922 (100.00%)</td>
-        <td>Deterministic structural validation of every row across all lots and editions</td>
-      </tr>
-      <tr>
-        <td>Invalid JSON rows</td>
-        <td class="num ok">0</td>
-        <td>Strict JSONL parsing, UTF-8, one sample per row</td>
-      </tr>
-      <tr>
-        <td>Phantom tool calls / undeclared arguments</td>
-        <td class="num ok">0 (fails the row)</td>
-        <td>Every call checked against declared tool + argument schema</td>
-      </tr>
-      <tr>
-        <td>Near-duplicate rate</td>
-        <td class="num ok">0 at threshold</td>
-        <td>3-gram Jaccard 竕･ 0.85 exclusion vs. all prior rows incl. shipped lots</td>
-      </tr>
-      <tr>
-        <td>Validator self-test</td>
-        <td class="num ok">23 mutation classes</td>
-        <td>Gold rows must pass; deliberately corrupted variants must be caught</td>
-      </tr>
+      <tr><th>Metric</th><th>What it tells you</th></tr>
+      <tr><td>Recovery success rate</td><td>How often the agent recovers after an injected tool failure</td></tr>
+      <tr><td>Schema &amp; validation error rate</td><td>How often outputs break the declared tool schema</td></tr>
+      <tr><td>Task completion rate</td><td>How often the task is completed end to end</td></tr>
     </table>
-    <p>Full per-lot breakdown: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">evaluation/EVALS.md</a> ﾂｷ Reproduce locally:</p>
-    <pre>python validate_jsonl.py --track mcp_tool_use path/to/dataset.jsonl</pre>
-    <h3>Try before anything else 窶・free 50-row samples (Apache-2.0)</h3>
-    <p>The free samples use the <em>same schema</em> as the full commercial datasets, so you can wire them into your evaluation harness (Axolotl, Unsloth, custom) first:</p>
-    <ul>
-      <li><a href="https://huggingface.co/datasets/springofwindslabs/mcp-agent-trajectory-benchmark">MCP Agent Trajectory Benchmark</a></li>
-      <li><a href="https://huggingface.co/datasets/springofwindslabs/function-calling-en-trial">Function Calling EN</a></li>
-      <li><a href="https://huggingface.co/datasets/springofwindslabs/function-calling-ja-trial">Function Calling JA</a></li>
-      <li><a href="https://huggingface.co/datasets/springofwindslabs/regulatory-compliance-cot-trial">Regulatory Compliance CoT</a></li>
-    </ul>
+    <p><strong>Pilot credit:</strong> 100% of the pilot fee is credited if you license within 60 days of the report; 50% after that.</p>
+
+    <!-- IMAGE SLOT (pilot 1): not yet placed. Missing file: media-generation-buyer-mcp-recovery-0-aa47b855-ee82-4429-84b7-42910ce255a5.webp
+    <div class="figure-slot"><img src="assets/media-generation-buyer-mcp-recovery-0-aa47b855-ee82-4429-84b7-42910ce255a5.webp" alt="MCP failure recovery in a measured pilot" loading="lazy"></div>
+    -->
+    <!-- IMAGE SLOT (pilot 2): not yet placed. Missing file: media-generation-buyer-pilot-report-0-c9652d4b-7874-44ee-a24a-3209b46d27eb.webp
+    <div class="figure-slot"><img src="assets/media-generation-buyer-pilot-report-0-c9652d4b-7874-44ee-a24a-3209b46d27eb.webp" alt="Example pilot report" loading="lazy"></div>
+    -->
+
+    <h3 style="margin-top:32px">Our own rehearsal, Run 1: 1.7% &rarr; 56.7% recovery</h3>
+    <p>The base model alone recovered from <strong>1.7%</strong> of injected MCP failures. With a LoRA adapter trained on our own corpus, it recovered from <strong>56.7%</strong>.</p>
+    <table>
+      <tr><th>Metric (60 tasks)</th><th>A: base model only</th><th>B: base + LoRA</th></tr>
+      <tr class="hl"><td>Recovery success rate</td><td class="num">1/60 = 1.7%</td><td class="num">34/60 = 56.7%</td></tr>
+      <tr><td>Task completion rate</td><td class="num">1/60 = 1.7%</td><td class="num">31/60 = 51.7%</td></tr>
+      <tr><td>Schema / validation error rate</td><td class="num">0/60 = 0.0%</td><td class="num">1/60 = 1.7%</td></tr>
+    </table>
+    <div class="note"><strong>Measured on our own fixed task set — your pilot runs on yours.</strong> This is a seller-run rehearsal, not a customer result. Conditions: 60 MCP failure-recovery tasks, base model <code>Qwen/Qwen2.5-1.5B-Instruct</code>, LoRA trained on 2,000 rows from our existing corpus, measured 2026-11-19. Recovery was weakest on rate-limit tasks (3/10 with LoRA), and the LoRA run produced 1 schema error where the base model produced none.</div>
+    <p><a href="pilot-report.html" onclick="trackClick('report_click','self_pilot_run1')">Read the full report &rarr;</a></p>
+    <p style="margin-top:20px"><a class="btn btn-primary" href="mailto:springofwindslabs@gmail.com?subject=Measured%20pilot%20inquiry" onclick="trackClick('contact_click','pilot')">Ask about a pilot on your task</a></p>
   </div>
 </section>
 
-<!-- 3. Real shipped sample -->
-<section id="sample">
+<!-- 4. Catalogue -->
+<section id="catalogue">
   <div class="wrap">
-    <h2>3. One row, verbatim, from a shipped lot</h2>
-    <p>This is row <code>ecom_research_pricing_retry_001</code> from the MCP Agent Trajectory 1K commercial lot — <strong>unedited, exactly as delivered</strong>. It shows the core training signal: a runtime failure, a strategy revision, and a verified recovery across chained tool calls.</p>
-    <table>
-      <tr><th style="width:12%">Turn</th><th>Content (verbatim)</th><th style="width:30%">What this trains</th></tr>
-      <tr>
-        <td><code>user</code></td>
-        <td class="mono-cell">I'm looking at a competitor, 'ShopFlow Pro'. Can you find their monthly subscription pricing for the 'Enterprise' plan?</td>
-        <td class="muted">Open-ended task requiring multi-step tool use</td>
-      </tr>
-      <tr>
-        <td><code>assistant</code></td>
-        <td><pre style="margin:0">{"name": "web_search", "arguments":
- {"query": "ShopFlow Pro Enterprise plan pricing"}}</pre></td>
-        <td class="muted">Strict tool-call JSON — declared tool, declared argument keys only</td>
-      </tr>
-      <tr>
-        <td><code>tool</code></td>
-        <td><pre style="margin:0">{"error": {"code": "429", "message":
- "Rate limit exceeded. Please wait before retrying."}}</pre></td>
-        <td><strong>Injected failure.</strong> Most datasets stop at happy paths — this is where ours begins.</td>
-      </tr>
-      <tr>
-        <td><code>assistant</code></td>
-        <td><pre style="margin:0">{"name": "web_search", "arguments":
- {"query": "ShopFlow Pro pricing page"}}</pre></td>
-        <td><strong>Recovery, not verbatim retry.</strong> The query is revised (broader target page), not blindly re-sent — verbatim retries fail validation.</td>
-      </tr>
-      <tr>
-        <td><code>tool</code></td>
-        <td><pre style="margin:0">{"results": [{"title": "ShopFlow Pro - Pricing Plans",
- "link": "https://shopflowpro.example.com/pricing"}]}</pre></td>
-        <td class="muted">Partial progress — a page, not yet the answer</td>
-      </tr>
-      <tr>
-        <td><code>assistant</code></td>
-        <td><pre style="margin:0">{"name": "scrape_page", "arguments":
- {"url": "https://shopflowpro.example.com/pricing"}}</pre></td>
-        <td class="muted">Chained second tool, arguments grounded in the prior result — not hallucinated</td>
-      </tr>
-      <tr>
-        <td><code>tool</code></td>
-        <td><pre style="margin:0">{"content": "Basic: $49/mo. Pro: $99/mo.
- Enterprise: $299/mo. ..."}</pre></td>
-        <td class="muted">Ground truth arrives</td>
-      </tr>
-      <tr>
-        <td><code>assistant</code></td>
-        <td class="mono-cell">The ShopFlow Pro Enterprise plan is priced at $299 per month.</td>
-        <td><strong>Grounded final answer</strong> — matches tool output exactly; ungrounded numbers fail validation</td>
-      </tr>
-    </table>
-    <p class="muted">The deterministic validator enforces on every row what you see here: tool calls reference declared tools and argument keys only, every <code>tool</code> turn follows a valid call, recovery differs from the failed attempt, and the final answer is grounded in returned data. All domains are synthetic (<code>example.com</code>) — no scraped content, no PII. Run it yourself: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a>.</p>
-  </div>
-</section>
+    <p class="eyebrow">Catalogue</p>
+    <h2>Four tracks, one schema discipline</h2>
+    <p class="lead">Every track ships as Strict JSONL. Prices are for the 1K lot: perpetual, organization-wide licence, no redistribution. Free 50-row samples (Apache-2.0) are on Hugging Face.</p>
 
-<!-- 4. Free vs commercial -->
-<section id="compare">
-  <div class="wrap">
-    <h2>4. Free sample vs. commercial package</h2>
-    <table>
-      <tr><th></th><th>Free sample (Hugging Face)</th><th>Standard 1K</th><th>Extended 2K+</th></tr>
-      <tr><td>Rows</td><td>50 per track</td><td>1,000+ per track</td><td>2,300+ per track, non-overlapping with 1K</td></tr>
-      <tr><td>License</td><td>Apache-2.0</td><td colspan="2">Perpetual commercial license (non-redistributable)</td></tr>
-      <tr><td>Schema validation report</td><td>Public (EVALS.md)</td><td colspan="2">Included per delivery (stats.json)</td></tr>
-      <tr><td>SHA-256 integrity manifest</td><td>窶・/td><td colspan="2">Included (SHA256SUMS.txt)</td></tr>
-      <tr><td>Overlap guarantee</td><td>窶・/td><td colspan="2">Hash + ID + 3-gram Jaccard audited against all prior lots</td></tr>
-      <tr><td>Enterprise invoicing / NDA</td><td>窶・/td><td colspan="2">Available on request</td></tr>
-    </table>
-  </div>
-</section>
-
-<!-- 5. Packages -->
-<section id="packages">
-  <div class="wrap">
-    <h2>5. Packages &amp; acquisition</h2>
-    <p class="muted">Card settlement via Gumroad. Corporate invoicing, NDA, and wire transfer available by inquiry.</p>
-    <div class="cards">
-      <div class="card" style="border-color:#4a9eff">
-        <h3>🌱 Starter 250 — $49</h3>
-        <p class="muted" style="margin:0 0 8px"><strong>Start here:</strong> 250 error-recovery MCP trajectories. Strict subset of the 1K tier — upgrade later and lose nothing.</p>
-        <ul>
-          <li>Every row: failure → diagnosis → verified recovery</li>
-          <li>Same schema, same validation as full lots</li>
-          <li>Price you can expense without a meeting</li>
-        </ul>
-        <p class="price">$49 · instant download</p>
-        <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/mcp-starter-250?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=mcp-starter-250"
-           onclick="trackClick('purchase_click','starter_250')">Get Starter 250</a>
-      </div>
+    <div class="grid">
       <div class="card">
+        <!-- IMAGE SLOT (MCP card): not yet placed. Missing file: media-generation-track-mcp-0-03ff6518-04f9-4a8f-a15c-00e412d03643.webp
+        <img src="assets/media-generation-track-mcp-0-03ff6518-04f9-4a8f-a15c-00e412d03643.webp" alt="MCP Agent Trajectory" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:12px">
+        -->
+        <span class="tag">Strict JSONL</span>
         <h3>MCP Agent Trajectory</h3>
-        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> agents trust stale state after silent no-op "successes" and collapse mid-trajectory.</p>
         <ul>
           <li>Multi-turn MCP tool-use trajectories</li>
-          <li>403 / 429 / lock-conflict recovery</li>
-          <li>1K standard ﾂｷ 2K+ extended lots</li>
+          <li>403 / 429 / lock-conflict failure and recovery</li>
+          <li>1K lot: 1,003 rows · Extended: 3,303 rows (1K lot + 2,300 non-overlapping)</li>
         </ul>
-        <p class="price">Platform price 窶・see gateway</p>
-        <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/mcp-agent-trajectory?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=mcp"
-           onclick="trackClick('purchase_click','mcp_tool_use')">Acquire license</a>
+        <p class="price">$7,300 <span class="muted">· 1K lot</span></p>
+        <p style="margin:8px 0"><a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/mcp-agent-trajectory?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=mcp" onclick="trackClick('purchase_click','mcp_tool_use')">Acquire licence</a></p>
+        <a class="muted" href="https://huggingface.co/datasets/springofwindslabs/mcp-agent-trajectory-benchmark">Free sample on Hugging Face</a>
       </div>
+
       <div class="card">
+        <!-- IMAGE SLOT (FC-EN card): not yet placed. Missing file: media-generation-track-fc-en-0-37ccd965-fd23-40a6-92c3-e4e272ae015b.webp
+        <img src="assets/media-generation-track-fc-en-0-37ccd965-fd23-40a6-92c3-e4e272ae015b.webp" alt="Function Calling EN" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:12px">
+        -->
+        <span class="tag">Strict JSONL</span>
         <h3>Function Calling (EN)</h3>
-        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> schema drift under multi-turn load — undeclared arguments and phantom tools slip into production.</p>
         <ul>
           <li>Argument-level correctness under changing state</li>
-          <li>Strict schema, error-recovery rows</li>
-          <li>1K standard ﾂｷ 2K+ extended lots</li>
+          <li>Declared tools and argument keys only</li>
+          <li>1K lot: 1,000 rows · Extended: 3,300 rows (1K lot + 2,300 non-overlapping)</li>
         </ul>
-        <p class="price">Platform price 窶・see gateway</p>
-        <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-en?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=fc_en"
-           onclick="trackClick('purchase_click','function_calling_en')">Acquire license</a>
+        <p class="price">$6,400 <span class="muted">· 1K lot</span></p>
+        <p style="margin:8px 0"><a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-en?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=fc_en" onclick="trackClick('purchase_click','function_calling_en')">Acquire licence</a></p>
+        <a class="muted" href="https://huggingface.co/datasets/springofwindslabs/function-calling-en-trial">Free sample on Hugging Face</a>
       </div>
+
       <div class="card">
+        <!-- IMAGE SLOT (FC-JA card): not yet placed. Missing file: media-generation-buyer-fc-ja-scene-0-3986377c-5467-4c79-b0ed-0c1466443470.webp
+        <img src="assets/media-generation-buyer-fc-ja-scene-0-3986377c-5467-4c79-b0ed-0c1466443470.webp" alt="Function Calling JA" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:12px">
+        -->
+        <span class="tag">Strict JSONL</span>
         <h3>Function Calling (JA)</h3>
-        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> Japanese honorifics and entity double-meanings break tool routing that passes English benchmarks.</p>
         <ul>
-          <li>Japanese high-context tool routing</li>
-          <li>Honorifics, entity ambiguity coverage</li>
-          <li>1K standard ﾂｷ 2K+ extended lots</li>
+          <li>Single-shot Japanese request &rarr; strict-JSON tool call</li>
+          <li>Honorifics and entity ambiguity coverage</li>
+          <li>1K lot: 1,000 rows · Extended: 3,300 rows (1K lot + 2,300 non-overlapping)</li>
         </ul>
-        <p class="price">Platform price 窶・see gateway</p>
-        <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-ja?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=fc_ja"
-           onclick="trackClick('purchase_click','function_calling_ja')">Acquire license</a>
+        <p class="price">$8,500 <span class="muted">· 1K lot</span></p>
+        <p style="margin:8px 0"><a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/function-calling-ja?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=fc_ja" onclick="trackClick('purchase_click','function_calling_ja')">Acquire licence</a></p>
+        <a class="muted" href="https://huggingface.co/datasets/springofwindslabs/function-calling-ja-trial">Free sample on Hugging Face</a>
       </div>
+
       <div class="card">
+        <!-- IMAGE SLOT (CoT card): not yet placed. Missing file: media-generation-buyer-cot-audit-0-9a98d863-a431-4997-916b-8b240df36d58.webp
+        <img src="assets/media-generation-buyer-cot-audit-0-9a98d863-a431-4997-916b-8b240df36d58.webp" alt="Regulatory Compliance CoT" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:12px">
+        -->
+        <span class="tag">Strict JSONL</span>
         <h3>Regulatory Compliance CoT</h3>
-        <p class="muted" style="margin:0 0 8px"><strong>Problem:</strong> models cite the right regulation and still reach the wrong conclusion — reasoning failures, not retrieval failures.</p>
         <ul>
           <li>Multi-jurisdictional audit reasoning</li>
-          <li>Grounded conclusions, cited provisions</li>
-          <li>1K standard ﾂｷ 2K+ extended lots</li>
+          <li>Ordered reasoning steps, grounded conclusions</li>
+          <li>1K lot: 1,000 rows · Extended: 3,300 rows (1K lot + 2,300 non-overlapping)</li>
         </ul>
-        <p class="price">Platform price 窶・see gateway</p>
-        <a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/regulatory-compliance-cot?utm_source=github_pages&utm_medium=commercial_hub&utm_campaign=cot"
-           onclick="trackClick('purchase_click','regulatory_cot')">Acquire license</a>
+        <p class="price">$12,500 <span class="muted">· 1K lot</span></p>
+        <p style="margin:8px 0"><a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/regulatory-compliance-cot?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=cot" onclick="trackClick('purchase_click','regulatory_cot')">Acquire licence</a></p>
+        <a class="muted" href="https://huggingface.co/datasets/springofwindslabs/regulatory-compliance-cot-trial">Free sample on Hugging Face</a>
       </div>
-      <div class="card">
-        <h3>Enterprise / Custom</h3>
-        <ul>
-          <li>Custom generation to your tool schemas</li>
-          <li>Multi-branch volume licensing</li>
-          <li>NDA, corporate invoicing, wire transfer</li>
-        </ul>
-        <p class="price">By quote</p>
-        <a class="btn btn-ghost" href="mailto:springofwindslabs@gmail.com?subject=Enterprise%20dataset%20licensing%20inquiry"
-           onclick="trackClick('contact_click','enterprise')">Submit procurement inquiry</a>
-      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;border-color:#4a9eff">
+      <h3>Starter 250 — $49</h3>
+      <p style="margin:0 0 10px">250 MCP error-recovery trajectories — a strict subset of the MCP 1K lot, same schema, same validation. Instant download.</p>
+      <p style="margin:0"><a class="btn btn-primary" href="https://springofwindslabs.gumroad.com/l/mcp-starter-250?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=mcp-starter-250" onclick="trackClick('purchase_click','starter_250')">Get Starter 250</a></p>
     </div>
   </div>
 </section>
 
-<!-- 6. Licensing / FAQ -->
+<!-- 5. How it's made -->
+<section id="made">
+  <div class="wrap">
+    <p class="eyebrow">How it's made</p>
+    <h2>Synthetic by design, validated row by row</h2>
+    <ul>
+      <li><strong>100% synthetic.</strong> No PII, no scraping, no customer data.</li>
+      <li><strong>Generation pipeline.</strong> Schema-gated generation &rarr; deterministic structural validation (declared tools and argument keys only, strict role alternation) &rarr; 3-gram Jaccard &ge; 0.85 de-duplication against all shipped lots &rarr; independent LLM scoring &rarr; final review.</li>
+      <li><strong>Every row checked.</strong> The deterministic stage is public: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a> runs on 100% of rows, not a sample.</li>
+      <li><strong>Rights.</strong> The lab holds the rights to all data it licenses.</li>
+    </ul>
+    <!-- IMAGE SLOT (pipeline): not yet placed. Missing file: pipeline-diagram.svg
+    <div class="figure-slot"><img src="assets/pipeline-diagram.svg" alt="Generation and validation pipeline" loading="lazy"></div>
+    -->
+  </div>
+</section>
+
+<!-- 6. Ways to work with us -->
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow">Ways to work with us</p>
+    <h2>Three doors, from lowest to highest commitment</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Starter 250 — $49</h3>
+        <p>Instant download on Gumroad. Look at real rows in your own pipeline.</p>
+        <p style="margin:0"><a class="btn btn-ghost" href="https://springofwindslabs.gumroad.com/l/mcp-starter-250?utm_source=github_pages&amp;utm_medium=showcase&amp;utm_campaign=mcp-starter-250" onclick="trackClick('purchase_click','starter_250_door')">Get Starter 250</a></p>
+      </div>
+      <div class="card">
+        <h3>Measured pilot — $990</h3>
+        <p>Fixed price. With/without measurement on your task, delivered as a report.</p>
+        <p style="margin:0"><a class="btn btn-ghost" href="mailto:springofwindslabs@gmail.com?subject=Measured%20pilot%20inquiry" onclick="trackClick('contact_click','pilot_door')">Ask about a pilot</a></p>
+      </div>
+      <div class="card">
+        <h3>Licence</h3>
+        <p>Direct purchase with Stripe invoicing for the 1K and Extended lots.</p>
+        <p style="margin:0"><a class="btn btn-ghost" href="mailto:springofwindslabs@gmail.com?subject=Dataset%20licence%20inquiry" onclick="trackClick('contact_click','licence_door')">Request a licence invoice</a></p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:16px">Evaluation or custom specification production: write to <a href="mailto:springofwindslabs@gmail.com?subject=Evaluation%20or%20spec%20production">springofwindslabs@gmail.com</a>.</p>
+  </div>
+</section>
+
+<!-- 7. About -->
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow">About the lab</p>
+    <h2>Small and new, so everything can be checked first</h2>
+    <p class="lead">We are small and new. That is exactly why everything we sell can be checked first: samples, schemas, validation, and a measured pilot on your own task before any licence.</p>
+    <p>Contact: <a href="mailto:springofwindslabs@gmail.com">springofwindslabs@gmail.com</a></p>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
 <section id="faq">
   <div class="wrap">
-    <h2>6. Licensing &amp; FAQ</h2>
-    <h3>License terms</h3>
-    <p>Commercial packages grant perpetual organizational usage rights for model training, evaluation, and internal tooling. Standalone redistribution of raw data is prohibited. Free samples are Apache-2.0.</p>
-    <h3>Is the data safe for commercial training?</h3>
-    <p>Yes. All records are 100% synthetic 窶・no customer data, no scraped content, no PII, no copyrighted material. Each commercial delivery ships with a SHA-256 integrity manifest for audit trails.</p>
-    <h3>How is quality verified?</h3>
-    <p>A multi-stage pipeline: generation-time schema gating 竊・deterministic structural validation (declared tools/arguments only, strict role alternation) 竊・3-gram Jaccard 竕･ 0.85 dedup against all shipped lots 竊・independent LLM scoring 竊・final review. The deterministic stage is public and reproducible (<a href="https://github.com/springofwindslabs/springofwinds-datasets/tree/main/evaluation">evaluation/</a>).</p>
-    <h3>Can I evaluate before purchasing?</h3>
-    <p>Yes 窶・run the free 50-row samples through your pipeline first. They share the exact schema of the full datasets.</p>
-    <h3>Do new lots overlap with ones I already bought?</h3>
-    <p>No. Every new lot is audited (hash, ID, 3-gram Jaccard) against previously shipped lots 窶・no budget is spent twice on the same row.</p>
+    <p class="eyebrow">FAQ</p>
+    <h2>Short answers</h2>
+    <details>
+      <summary>What does the licence cover?</summary>
+      <p>Perpetual, organization-wide use for model training, evaluation and internal tooling.</p>
+    </details>
+    <details>
+      <summary>Can I redistribute the data?</summary>
+      <p>No. There is no redistribution tier. Free 50-row samples are Apache-2.0.</p>
+    </details>
+    <details>
+      <summary>Do early buyers get updates?</summary>
+      <p>Founding buyers receive free updates within the same track.</p>
+    </details>
+    <details>
+      <summary>Do you offer exclusive licences?</summary>
+      <p>No. We do not sell exclusive licences.</p>
+    </details>
   </div>
 </section>
-<!-- 7. Release notes -->
-<section id="releases">
-  <div class="wrap">
-    <h2>7. Release notes</h2>
-    <p class="muted">This catalog is actively maintained. Dates below are actual shipment and measurement dates.</p>
-    <table>
-      <tr><th style="width:18%">Date</th><th>Release</th></tr>
-      <tr><td>2026-10-02</td><td>Evidence hub launched with GA4-instrumented funnel. Published a verbatim failure→recovery row from a shipped commercial lot (<code>ecom_research_pricing_retry_001</code>).</td></tr>
-      <tr><td>2026-09-27</td><td>Full-corpus deterministic validation measured: <strong>28,922 / 28,922 rows, 100.00% schema pass, 0 invalid JSON</strong>. Validator published (<a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a>).</td></tr>
-      <tr><td>2026-09-16 / 17</td><td>Commercial 1K v1.1 and 2K+ extended lots finalized for all four tracks, with cross-lot 3-gram Jaccard dedup audit (zero overlap between tiers).</td></tr>
-    </table>
-  </div>
-</section>
+
 <footer>
   <div class="wrap">
-    <strong>springofwindslabs</strong> 窶・synthetic evaluation data for agent reliability.<br>
-    Free datasets: <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> ﾂｷ
-    Code &amp; validation tooling: <a href="https://github.com/springofwindslabs/springofwinds-datasets">GitHub</a> ﾂｷ
-    Contact: <a href="mailto:springofwindslabs@gmail.com">springofwindslabs@gmail.com</a>
+    <strong>Spring of Winds Labs</strong> — agent training data, founded 2026, Japan.<br>
+    <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> ·
+    <a href="https://github.com/springofwindslabs/springofwinds-datasets">GitHub</a> ·
+    <a href="evidence.html">Evidence</a> ·
+    <a href="pilot-report.html">Pilot report</a> ·
+    <a href="mailto:springofwindslabs@gmail.com">springofwindslabs@gmail.com</a>
   </div>
 </footer>
 

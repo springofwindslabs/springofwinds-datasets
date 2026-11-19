@@ -4,7 +4,7 @@ Minimal, reproducible recipes to evaluate the free 50-row trials **before** purc
 
 ## Validation evidence (full corpus)
 
-- **[EVALS.md](EVALS.md)** — measured pass rates for **all 28,922 shipped rows** (100.00%, 2026-09-27)
+- **[EVALS.md](EVALS.md)** — measured pass rates for **all 28,922 shipped rows** (100.00%, 2026-11-19)
 - **[SAMPLE_ANALYSIS.md](SAMPLE_ANALYSIS.md)** — annotated sample walkthroughs per track
 - **[validate_jsonl.py](validate_jsonl.py)** — stdlib-only validator: reproduce our numbers on your copy
 - **[evals_summary.json](evals_summary.json)** — machine-readable summary

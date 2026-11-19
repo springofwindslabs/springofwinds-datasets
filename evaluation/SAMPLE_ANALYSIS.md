@@ -1,6 +1,6 @@
 # Sample Analysis — why these rows train recovery, not just success
 
-_Annotated excerpts from shipped datasets (2026-09-27). Rows truncated for readability; structure is exactly as shipped._
+_Annotated excerpts from shipped datasets (2026-11-19). Rows truncated for readability; structure is exactly as shipped._
 
 ## `mcp_tool_use` — Multi-turn MCP agent trajectories with error recovery (429/403/locks)
 
