@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -204,7 +204,11 @@
     <h2>Free evaluation API</h2>
     <p>Score your agent's error-recovery outputs against held-out golden tasks &mdash; free.<br>
     Our evaluation API returns pass/fail and a failure classification per record; the golden data is never exposed.<br>
-    Fetching the task list does not consume your scoring quota. Free plan: 100 scoring calls/month.</p>
+    Fetching the task list does not consume your scoring quota. Free plan: 100 scoring calls/month, up to 100 records per call.</p>
+    <p class="muted"><code>POST /v1/score</code> request:</p>
+<pre style="overflow-x:auto;white-space:pre-wrap;word-break:break-all"><code>{"records": [{"task_id": "T001", "outputs": ["{\"name\": \"list_s3_buckets\", \"arguments\": {}}"]}]}</code></pre>
+    <p class="muted">Response:</p>
+<pre style="overflow-x:auto;white-space:pre-wrap;word-break:break-all"><code>{"summary": {"total": 1, "schema_valid": 1, "scored": 1, "mean_score": 0.5}, "failure_breakdown": {"rate_limit": 1}, "per_record": [{"index": 0, "schema_valid": true, "score": 0.5, "failure_category": "rate_limit"}]}</code></pre>
     <p><a class="btn btn-primary" href="https://rapidapi.com/%E7%A5%9E%E5%B4%8E%E6%81%B5/api/springofwinds-lab">Try it on RapidAPI</a></p>
     <p class="muted">https://rapidapi.com/%E7%A5%9E%E5%B4%8E%E6%81%B5/api/springofwinds-lab</p>
   </div>
