@@ -195,6 +195,8 @@
       <div class="stat"><b>1,300+</b><span>downloads on Hugging Face (Nov 2026)</span></div>
     </div>
     <p class="muted" style="margin-top:16px">Per-lot results: <a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/EVALS.md">EVALS.md</a> · Details and a verbatim row from a shipped lot: <a href="evidence.html">evidence page</a>.</p>
+    <p style="margin-top:16px">Independent lab based in Japan, operating since 2026. Contact: <a href="mailto:springofwinds-labs@muse.ai">springofwinds-labs@muse.ai</a> &mdash; we read and reply to every inquiry.</p>
+    <p id="quickstart"><strong>Try it in 5 minutes:</strong> 1) Get a free 50-row sample on <a href="https://huggingface.co/springofwindslabs">Hugging Face</a> &rarr; 2) Run the public validator (<a href="https://github.com/springofwindslabs/springofwinds-datasets/blob/main/evaluation/validate_jsonl.py"><code>validate_jsonl.py</code></a>) on it &rarr; 3) Score your agent's outputs with the <a href="https://rapidapi.com/%E7%A5%9E%E5%B4%8E%E6%81%B5/api/springofwinds-lab">free evaluation API</a>.</p>
   </div>
 </section>
 
@@ -204,7 +206,7 @@
     <h2>Free evaluation API</h2>
     <p>Score your agent's error-recovery outputs against held-out golden tasks &mdash; free.<br>
     Our evaluation API returns pass/fail and a failure classification per record; the golden data is never exposed.<br>
-    Fetching the task list does not consume your scoring quota. Free plan: 100 scoring calls/month, up to 100 records per call.</p>
+    Fetching the task list does not consume your scoring quota. Free plan: 100 scoring calls/month, up to 100 records per call. Operational since 2026-11-23.</p>
     <p class="muted"><code>POST /v1/score</code> request:</p>
 <pre style="overflow-x:auto;white-space:pre-wrap;word-break:break-all"><code>{"records": [{"task_id": "T001", "outputs": ["{\"name\": \"list_s3_buckets\", \"arguments\": {}}"]}]}</code></pre>
     <p class="muted">Response:</p>
@@ -219,6 +221,7 @@
   <div class="wrap">
     <p class="eyebrow">Measured pilot — $990</p>
     <h2>Know what the data does on your task before you license it</h2>
+    <p class="muted">See a real pilot report first: <a href="pilot-report.html">pilot-report.html</a>.</p>
     <p class="lead">You give us your tasks. We measure your model with and without our data, and deliver the report. The price is fixed at $990.</p>
 
     <ol class="steps">
@@ -337,6 +340,22 @@
       <li><strong>Rights.</strong> The lab holds the rights to all data it licenses.</li>
     </ul>
     <div class="figure-slot"><img src="assets/pipeline-diagram.svg" alt="Generation and validation pipeline" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- For procurement -->
+<section id="procurement">
+  <div class="wrap">
+    <p class="eyebrow">For procurement</p>
+    <h2>The terms in one place</h2>
+    <ul>
+      <li><strong>Prices (1K lot):</strong> MCP Agent Trajectory $7,300 · Function Calling (EN) $6,400 · Function Calling (JA) $8,500 · Regulatory Compliance CoT $12,500 · Starter 250 $49 · Measured pilot $990.</li>
+      <li><strong>Licence:</strong> perpetual, organization-wide. No redistribution.</li>
+      <li><strong>Delivery:</strong> files (Strict JSONL).</li>
+      <li><strong>Invoicing and payment:</strong> Stripe invoicing for the 1K and Extended lots; corporate NDAs, custom billing and bank wire transfers: contact us.</li>
+      <li><strong>Data:</strong> 100% synthetic, no PII. The lab holds the rights to all data it licenses.</li>
+      <li><strong>Contact:</strong> <a href="mailto:springofwinds-labs@muse.ai">springofwinds-labs@muse.ai</a></li>
+    </ul>
   </div>
 </section>
 
