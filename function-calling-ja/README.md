@@ -29,4 +29,4 @@ Apache-2.0
 
 ### Enterprise Procurement
 For licensing, corporate invoicing, procurement review, or custom commercial agreements:
-✉️ springofwindslabs@gmail.com
+✉️ springofwinds-labs@muse.ai

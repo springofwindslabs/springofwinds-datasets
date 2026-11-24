@@ -131,7 +131,7 @@ https://springofwindslabs.gumroad.com
 | 2. **Inspect schema** | `schema.json` + 5-row samples in this repo | [Datasets table above](#datasets) |
 | 3. **Go production** | 1,000+ row volumes, perpetual commercial license, instant delivery | [Gumroad](https://springofwindslabs.gumroad.com?utm_source=github&utm_medium=readme_funnel&utm_campaign=springofwinds-datasets) |
 
-Questions before purchase? → springofwinds@gmail.com
+Questions before purchase? → springofwinds-labs@muse.ai
 
 ## Changelog
 See [CHANGELOG.md](CHANGELOG.md) for dataset and repository updates.
@@ -143,7 +143,7 @@ Apache-2.0
 
 ### Enterprise Procurement
 For licensing, corporate invoicing, procurement review, or custom commercial agreements:
-✉️ springofwindslabs@gmail.com
+✉️ springofwinds-labs@muse.ai
 
 <!-- repo-doctor-tools -->
 ## Tools
